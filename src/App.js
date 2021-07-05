@@ -1,19 +1,10 @@
-import './App.css';
-import Logo from './components/Logo.js';
+import React, { useState } from "react";
+import Startseite from "./components/Startseite/Startseite.js";
+import Verbindung from "./components/Verbindung/Verbindung.js";
 
-function App() {
-    return ( 
-    <div className = "App" >
-        <header className = "App-header" >
-        <Logo></Logo>                                           {/*Einbindung des Logos Nav2Gö*/}
-        <p> Willkommen! </p>   
-        <p> Das ist eine App für ein Projektstudium. </p>
-        </header>         
-        <p className="App-beschreibung"> Hier folgt ein Text für die Beschreibung der App</p>
-
-    </div>
-
-    );
-}
+const App = () => {
+  return <Verbindung />;
+  //<Startseite/>
+};
 
 export default App;
