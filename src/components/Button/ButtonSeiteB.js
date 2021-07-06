@@ -2,7 +2,7 @@
 
 import React, { useState }  from "react";
 import "../../Style.css";
-import Verbindung from "../Verbindung/Verbindung.js";
+import Verbindung from "../Verbindung.js";
 
 const ButtonSeiteB = () => {
   const onClickHandler = (event) => {

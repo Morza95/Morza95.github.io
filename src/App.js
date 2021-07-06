@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import Startseite from "./components/Startseite/Startseite.js";
-import Verbindung from "./components/Verbindung/Verbindung.js";
+import Startseite from "./components/Startseite.js";
+import Verbindung from "./components/Verbindung.js";
+import StartPage from './components/StartPage.js';
 
 const App = () => {
-  return <Verbindung />;
-  //<Startseite/>
+  return (
+    // diese <> </> Umschließung funktioniert in diesem Projekt als Ersatz für einen Wrapper
+  <>     
+  <StartPage />             
+  <Startseite />
+  <Verbindung />;
+  
+  </>
+  )
 };
 
 export default App;
