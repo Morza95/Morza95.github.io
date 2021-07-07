@@ -1,8 +1,6 @@
-import { useState } from "react";
 import React from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
-import ButtonUmfrage from "./Button/ButtonUmfrage.js";
 import Button from "./UI/Button";
 import Card from "./UI/Card";
 import classes from "./UI/Seiten.module.css";

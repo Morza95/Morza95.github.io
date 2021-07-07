@@ -1,22 +1,22 @@
 import React from "react";
 import Card from './Card';
 import Button from './Button';
-import classes from '.ErrorModal.module.css';
+import classes from './ErrorModal.module.css';
 
 const ErrorModal = (props) => {
   return (
       <div>
-    <div className={classes.backdrop} />
-    {/* um eine Interaktion mit dem Rest der Seite zu verhindern während die Fehlermeldung angezeigt wird */}
+          <div className={classes.backdrop} onClick={props.onConfirm} />  
+          {/* backdrop meint auf den Hintergrund klicken */}
     <Card className={classes.modal}>
       <header className={classes.header}>
-      <h2>{props.title}</h2>  {/*Leerer Text/ Titel, der angepasst wird je nach Aufruf*/}
+      <h2>{props.title}</h2>
       </header>
-      <div className={classes.inhalt}>
+      <div className={classes.content}>
           <p>{props.message}</p>
       </div>
       <footer className={classes.actions}>
-        <Button>Ok</Button>
+        <Button onClick={props.onConfirm}>Okay</Button>
       </footer>
     </Card>
     </div>
@@ -24,3 +24,4 @@ const ErrorModal = (props) => {
 };
 
 export default ErrorModal;
+

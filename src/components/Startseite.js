@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
-import ButtonSeiteB from "./Button/ButtonSeiteB.js";
+import SearchPage from "./SearchPage";
 import Button from "./UI/Button";
+import "./UI/Button.module.css";
 import Card from "./UI/Card";
 import classes from "./UI/Seiten.module.css";
 
 const Startseite = (props) => {
+  // ClickHandler
+  const continueClickedHandler = () => {
+    setContinueClicked(true);
+  };
 
-  // Button Click Handler einfügen
+  const [clicked, setContinueClicked] = useState(false);
 
   const onClickHandler = (event) => {
     event.preventDefault();
@@ -17,6 +22,7 @@ const Startseite = (props) => {
     //Import von classes Styling - dem css Modul
     <Card className={classes.input}>
       <form onSubmit={onClickHandler}>
+        {/* <fieldset disabled="disabled"> */}
         <header className="Startseite-header">
           <Logo></Logo> {/*Einbindung des Logos Nav2Gö*/}
           <p> Willkommen! </p>
@@ -29,8 +35,16 @@ const Startseite = (props) => {
           Text gelesen haben, können Sie mit einem Klick auf den Button den Test
           beginnen!
         </p>
-        <Button type="submit">Weiter</Button>
+        {clicked ? (
+          <SearchPage />
+        ) : (
+          <Button onClick={continueClickedHandler} type="submit">
+            Weiter
+          </Button>
+        )}
+        {/* </fieldset> */}
       </form>
+      {/* {clicked? <form disabled={true} />} */}
     </Card>
   );
 };

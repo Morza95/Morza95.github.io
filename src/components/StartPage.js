@@ -1,14 +1,15 @@
 
 import { useState } from 'react';
-import SearchPage from './SearchPage.js';
+import Startseite from './Startseite.js';
 import '../Style.css'; 
+import classes from './UI/Button.module.css'
 
 const StartPage = () => {
 const [clicked, setClicked] = useState(false);
 
 return(
      <div>
-        {clicked? <SearchPage/>: <button disabled={clicked} onClick={() => setClicked(true)} > Nav2Gö </button> }
+        {clicked? <Startseite/>: <button className={classes.button} disabled={clicked} onClick={() => setClicked(true)} > Nav2Gö </button> }
      </div>
     )
 
