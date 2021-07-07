@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Style.css";
 import Card from "./UI/Card";
 import classes from "./Verbindung/Verbindungsanzeige.module.css";
 import Button from "./UI/Button";
 import Logo from "./Logo.js";
+import SearchPage from "./SearchPage.js";
+import Ende from "./Ende.js";
 
-const onClickHandler = (event) => {
-  event.preventDefault(); // Aktuell: Neuladen der Seite verhindern
-};
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
 
@@ -19,10 +18,25 @@ function Header() {
 }
  */
 const Verbindungsanzeige = (props) => {
+  // Button - useState
+  const [clickedBack, setBackClicked] = useState(false);
+  const [clickedEnd, setEndClicked] = useState(false);
+
+  const onClickHandler = (event) => {
+    event.preventDefault(); // Aktuell: Neuladen der Seite verhindern
+  };
+
+  const backClickHandler = () => {
+    setBackClicked(true);
+  };
+  const endClickHandler = () => {
+    setEndClicked(true);
+  };
+
   return (
-      <Card className={classes.input}>
+    <Card className={classes.input}>
       <form onSubmit={onClickHandler}>
-      <header className="Verbindung-header">Verbindungen</header>
+        <header className="Verbindung-header">Verbindungen</header>
         {/* <Bild/> 
     <img src={require('.../public/busemoji.png')} />
         */}
@@ -34,16 +48,27 @@ const Verbindungsanzeige = (props) => {
         <div className="Verbindung-textfeld-rechts">
           Ankunft: Am {props.departureDay} um {props.departureTime} Uhr
         </div>
-
         <div className="Verbindung-textfeld-links">
           Abfahrt an Haltestelle: {props.departureStop}
         </div>
         <div className="Verbindung-textfeld-rechts">
           Ankunft an Haltestelle: {props.destinationStop}
         </div>
-        <Button type="submit">Zurück</Button>
-        <Button type="submit">Auf erste Seite</Button>
-
+        {clickedBack ? (
+          <SearchPage />
+        ) : (
+          <Button onClick={backClickHandler} type="submit">
+            Zurück
+          </Button>
+        )}
+        ;
+        {clickedEnd ? (
+          <Ende />
+        ) : (
+          <Button onClick={endClickHandler} type="submit">
+            Auf erste Seite
+          </Button>
+        )}
         <Logo />
       </form>
     </Card>

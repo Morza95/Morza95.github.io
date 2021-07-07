@@ -18,7 +18,7 @@ const Ende = () => {
           <p> Danke für die Teilnahme! </p>
           <p> Klicke jetzt bitte auf den Button, um zur Umfrage zu gelangen </p>
         </header>
-        <Button type="submit">Zurück</Button>
+        <Button type="submit">Zurück auf Anfang</Button>
       </form>
     </Card>
   );
