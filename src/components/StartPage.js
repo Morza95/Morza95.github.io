@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import SearchPage from './SearchPage.js';
-import './Style.css'; 
+import '../Style.css'; 
 
 const StartPage = () => {
 const [clicked, setClicked] = useState(false);

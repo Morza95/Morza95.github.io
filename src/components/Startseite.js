@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "../../Style.css";
+import "../Style.css";
 import Logo from "./Logo.js";
 import ButtonSeiteB from "./Button/ButtonSeiteB.js";
 import Button from "./UI/Button";
 import Card from "./UI/Card";
-import classes from "../UI/Seiten.module.css";
+import classes from "./UI/Seiten.module.css";
 
 const Startseite = (props) => {
 

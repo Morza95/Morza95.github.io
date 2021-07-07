@@ -1,7 +1,7 @@
 import React from "react";
-import "../../Style.css";
+import "../Style.css";
 import Card from "./UI/Card";
-import classes from './Verbindungsanzeige.module.css'
+import classes from './Verbindung/Verbindungsanzeige.module.css'
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
 

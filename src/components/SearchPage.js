@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ResultPage from './ResultPage.js';
-import './Style.css';
+import '../Style.css';
 
 const SearchPage = () => {
     const [departureStop, setDepartureStop] = useState("");
