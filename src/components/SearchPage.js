@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ErrorModal from "./UI/ErrorModal.js";
 import "../Style.css";
 import Verbindungsanzeige from "./Verbindungsanzeige.js";
-import Verbindung from "./Verbindung.js";
+//import Verbindung from "./Verbindung.js";
 import Card from './UI/Card.js'
 import classes from './UI/Card.module.css'
 
@@ -120,7 +120,7 @@ const SearchPage = () => {
         />
         <button onClick={searchClickedHandler}>Suchen</button>
         {searchClicked ? (
-          <Verbindung
+          <Verbindungsanzeige
             departureStop={departureStop}
             destinationStop={destinationStop}
             departureDay={departureDay}

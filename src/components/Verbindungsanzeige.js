@@ -2,6 +2,12 @@ import React from "react";
 import "../Style.css";
 import Card from "./UI/Card";
 import classes from "./Verbindung/Verbindungsanzeige.module.css";
+import Button from "./UI/Button";
+import Logo from "./Logo.js";
+
+const onClickHandler = (event) => {
+  event.preventDefault(); // Aktuell: Neuladen der Seite verhindern
+};
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
 
@@ -14,8 +20,9 @@ function Header() {
  */
 const Verbindungsanzeige = (props) => {
   return (
-    <Card className={classes.input}>
-      <form>
+      <Card className={classes.input}>
+      <form onSubmit={onClickHandler}>
+      <header className="Verbindung-header">Verbindungen</header>
         {/* <Bild/> 
     <img src={require('.../public/busemoji.png')} />
         */}
@@ -34,6 +41,10 @@ const Verbindungsanzeige = (props) => {
         <div className="Verbindung-textfeld-rechts">
           Ankunft an Haltestelle: {props.destinationStop}
         </div>
+        <Button type="submit">Zurück</Button>
+        <Button type="submit">Auf erste Seite</Button>
+
+        <Logo />
       </form>
     </Card>
   );

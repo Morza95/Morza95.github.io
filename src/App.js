@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Startseite from "./components/Startseite.js";
-import Verbindung from "./components/Verbindung.js";
+//import Verbindung from "./components/Verbindung.js";
 import StartPage from './components/StartPage.js';
 import Test from './components/Test.js'
+import SearchPage from './components/SearchPage.js'
 
 const App = () => {
   return (
