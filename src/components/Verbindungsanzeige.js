@@ -58,7 +58,7 @@ const Verbindungsanzeige = (props) => {
           <SearchPage />
         ) : (
           <Button onClick={backClickHandler} type="submit">
-            Zurück
+            Zurück zur Suche
           </Button>
         )}
         ;
@@ -66,7 +66,7 @@ const Verbindungsanzeige = (props) => {
           <Ende />
         ) : (
           <Button onClick={endClickHandler} type="submit">
-            Auf erste Seite
+            Test Beenden?
           </Button>
         )}
         <Logo />

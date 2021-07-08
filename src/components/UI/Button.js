@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./Button.module.css";
 
 const Button = (props) => {
-  const [clicked, setClicked] = useState(false); // Click useState
+  //const [clicked, setClicked] = useState(false); // Click useState
 
   return (
     <button

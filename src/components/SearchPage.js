@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import ErrorModal from "./UI/ErrorModal.js";
 import "../Style.css";
 import Verbindungsanzeige from "./Verbindungsanzeige.js";
 //import Verbindung from "./Verbindung.js";
-import Card from './UI/Card.js'
-import classes from './UI/Card.module.css'
+import Card from "./UI/Card.js";
+import classes from "./UI/Card.module.css";
+import Startseite from "./Startseite.js";
+import Button from "./UI/Button.js";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
   // useState
 
   const [departureStop, setDepartureStop] = useState("");
@@ -15,6 +17,9 @@ const SearchPage = () => {
   const [departureTime, setDepartureTime] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
   const [error, setError] = useState();
+  const [clickedBack, setBackClicked] = useState(false);
+
+  let Error = true;
 
   ////// References zu HTML Elementen //////
 
@@ -24,6 +29,25 @@ const SearchPage = () => {
   //const departureDayInputRef = useRef();
 
   /////// DUMMY TimeOut /////////////
+
+  // Variante A (Lektion 112)
+
+//   let myTimer;
+
+//   const [timerIsActive, setTimerIsActive] = useState(false);
+
+//   const { timerDuration } = props; // using destructuring to pull out specific props values
+
+//   useEffect(() => {
+//     if (!timerIsActive) {
+//       setTimerIsActive(true);
+//       myTimer = setTimeout(() => {
+//         setTimerIsActive(false);
+//       }, timerDuration);
+//     }
+//   }, [timerIsActive, timerDuration]);
+
+  // Variante B (Lektion 113)
 
   // setTimeout(() => {
   //   Input oder Funktion die Ausgeführt werden soll
@@ -43,17 +67,50 @@ const SearchPage = () => {
   //     };
   //   }, [departureStop]);    //
 
+  const backClickHandler = () => {
+    setBackClicked(true);
+  };
+
   const departureChangeHandler = (event) => {
     setDepartureStop(event.target.value);
     //const enteredDeparture = departureInputRef.current.value;
-    if (departureStop.trim().length === 0 || departureStop != "Gartenstraße") {
-      setError({
-        title: "Falscher Abfahrtsort",
-        message:
-          "Bitte geben Sie einen passenden Abfahrtsort ein (Gartenstraße)",
-      });
-      return;
+  };
+
+  //////// Fehlerprüfung - Prevent////////////////
+
+  const errorPrevent = () => {
+    if (
+      departureStop.trim().length === 0 ||
+      //departureStop != "Gartenstraße" ||
+      //departureTime.trim().length === 0 ||
+      destinationStop.trim().length === 0
+    ) {
+      return (
+        setError({
+          title: "Falsche Daten",
+          message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
+        }) && Error === true
+      );
     }
+    return Error === false;
+  };
+
+  ////////// ErrorHandler /////////
+
+  const errorHandler = () => {
+    setError(null);
+  };
+
+  ////// Handler ///////
+
+  const searchClickedHandler = () => {
+    errorPrevent();
+    console.log(Error);
+    //{Error? setSearchClicked(false) : setSearchClicked(true)}
+    if (Error) {
+      return setSearchClicked(true) && console.log("weiter gehts");
+    }
+    return setSearchClicked(false) && console.log("Fehler Aufgetreten");
   };
 
   const changeStopHandler = () => {
@@ -68,23 +125,19 @@ const SearchPage = () => {
   };
   const departureDayHandler = (event) => {
     setDepartureDay(event.target.value);
+    //localStorage.setItem()
   };
   const departureTimeHandler = (event) => {
     setDepartureTime(event.target.value);
   };
-  const searchClickedHandler = () => {
-    setSearchClicked(true);
-  };
 
-  // ErrorHandler
-  const errorHandler = () => {
-    setError(null);
-  };
+  /////////////////////////////////////////////
+  //// return bei Searchpage Aufruf ///////////
+  /////////////////////////////////////////////
 
   return (
     <React.Fragment>
-        <Card className={classes.input}>
-      <div>
+      <Card className={classes.input}>
         {error && (
           <ErrorModal
             title={error.title}
@@ -92,42 +145,48 @@ const SearchPage = () => {
             onConfirm={errorHandler}
           />
         )}
-      </div>
 
-      <div>
-        <input
-          type="text"
-          value={departureStop}
-          onChange={departureChangeHandler}
-          //ref={departureInputRef}
-        />
-        <button onClick={changeStopHandler}>tauschen</button>
-        <input
-          type="text"
-          value={destinationStop}
-          onChange={destinationStopHandler}
-        />
-        <input
-          type="date"
-          value={departureDay}
-          onChange={departureDayHandler}
-        />
-        <input
-          type="time"
-          value={departureTime}
-          onChange={departureTimeHandler}
-          //ref={destinationInputRef}
-        />
-        <button onClick={searchClickedHandler}>Suchen</button>
-        {searchClicked ? (
-          <Verbindungsanzeige
-            departureStop={departureStop}
-            destinationStop={destinationStop}
-            departureDay={departureDay}
-            departureTime={departureTime}
+        <div>
+          <input
+            type="text"
+            value={departureStop}
+            onChange={departureChangeHandler}
+            //ref={departureInputRef}
           />
-        ) : null}
-      </div>
+          <button onClick={changeStopHandler}>tauschen</button>
+          <input
+            type="text"
+            value={destinationStop}
+            onChange={destinationStopHandler}
+          />
+          <input
+            type="date"
+            value={departureDay}
+            onChange={departureDayHandler}
+          />
+          <input
+            type="time"
+            value={departureTime}
+            onChange={departureTimeHandler}
+            //ref={destinationInputRef}
+          />
+          <button onClick={searchClickedHandler}>Suchen</button>
+          {searchClicked ? (
+            <Verbindungsanzeige
+              departureStop={departureStop}
+              destinationStop={destinationStop}
+              departureDay={departureDay}
+              departureTime={departureTime}
+            />
+          ) : null}
+        </div>
+        {clickedBack ? (
+          <Startseite />
+        ) : (
+          <Button onClick={backClickHandler} type="submit">
+            Zurück zur Startseite
+          </Button>
+        )}
       </Card>
     </React.Fragment>
   );
