@@ -16,10 +16,11 @@ const SearchPage = (props) => {
   const [departureDay, setDepartureDay] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
-  const [error, setError] = useState();
+  const [Error, setError] = useState(false);
   const [clickedBack, setBackClicked] = useState(false);
+  const [hideSearchFields,setHideSearchFields ]= useState(false);
 
-  let Error = true;
+  //let Error = true;
 
   ////// References zu HTML Elementen //////
 
@@ -82,23 +83,23 @@ const SearchPage = (props) => {
     if (
       departureStop.trim().length === 0 ||
       //departureStop != "Gartenstraße" ||
-      //departureTime.trim().length === 0 ||
+      //departureTime ||
       destinationStop.trim().length === 0
     ) {
       return (
         setError({
           title: "Falsche Daten",
           message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
-        }) && Error === true
+        }), Error = true
       );
     }
-    return Error === false;
+    return Error = false;
   };
 
   ////////// ErrorHandler /////////
 
   const errorHandler = () => {
-    setError(null);
+    setError(false);
   };
 
   ////// Handler ///////
@@ -108,9 +109,9 @@ const SearchPage = (props) => {
     console.log(Error);
     //{Error? setSearchClicked(false) : setSearchClicked(true)}
     if (Error) {
-      return setSearchClicked(true) && console.log("weiter gehts");
+      return setSearchClicked(false) && console.log("weiter gehts");
     }
-    return setSearchClicked(false) && console.log("Fehler Aufgetreten");
+    return setSearchClicked(true) && console.log("Fehler Aufgetreten");
   };
 
   const changeStopHandler = () => {
@@ -131,6 +132,7 @@ const SearchPage = (props) => {
     setDepartureTime(event.target.value);
   };
 
+
   /////////////////////////////////////////////
   //// return bei Searchpage Aufruf ///////////
   /////////////////////////////////////////////
@@ -138,20 +140,20 @@ const SearchPage = (props) => {
   return (
     <React.Fragment>
       <Card className={classes.input}>
-        {error && (
+        {Error && (
           <ErrorModal
-            title={error.title}
-            message={error.message}
+            title={Error.title}
+            message={Error.message}
             onConfirm={errorHandler}
           />
         )}
-
-        <div>
+      { hideSearchFields? null:
+        <div >
           <input
             type="text"
             value={departureStop}
             onChange={departureChangeHandler}
-            //ref={departureInputRef}
+            //ref={departureInputRef} 
           />
           <button onClick={changeStopHandler}>tauschen</button>
           <input
@@ -170,8 +172,10 @@ const SearchPage = (props) => {
             onChange={departureTimeHandler}
             //ref={destinationInputRef}
           />
-          <button onClick={searchClickedHandler}>Suchen</button>
-          {searchClicked ? (
+          <button onClick={()=> {searchClickedHandler(); setHideSearchFields(true)}}>Suchen</button>
+        </div>
+        }
+                  {searchClicked ? (
             <Verbindungsanzeige
               departureStop={departureStop}
               destinationStop={destinationStop}
@@ -179,13 +183,13 @@ const SearchPage = (props) => {
               departureTime={departureTime}
             />
           ) : null}
-        </div>
+
         {clickedBack ? (
           <Startseite />
         ) : (
-          <Button onClick={backClickHandler} type="submit">
+          <button onClick={backClickHandler} type="submit">
             Zurück zur Startseite
-          </Button>
+          </button>
         )}
       </Card>
     </React.Fragment>

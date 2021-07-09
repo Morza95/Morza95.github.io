@@ -1,168 +1,250 @@
-.Verbindung-header {
-    background-color: #d47107;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    min-height: 5vh;
-  
-    display: flex;
-    position: static;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    font-size: calc(10px + 5vmin);
-    color: rgb(255, 255, 255);
-  }
-  
-  .Verbindung-bild {
-    position: left;
-  }
-  
-  .Verbindung-textfeld-links {
-    text-align: left;
-    position: left;
-    font-weight: bold;
-    background-color: white;
-    border: 1px solid black;
-    border-color: black;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
-  
-  .Verbindung-textfeld-rechts {
-    text-align: left;
-    position: right;
-    font-weight: bold;
-    background-color: white;
-    border: 1px solid black;
-    border-color: black;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
-  
-  .Verbindung-textfeld-mitte {
-    text-align: left;
-    position: center;
-    font-weight: bold;
-    background-color: white;
-    border: 1px solid black;
-    border-color: black;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
-
-
-  .Startseite-header {
-    background-color: #968c81;
-    text-align: center;
-    min-height: 50vh;
-    display: flex;
-    position: static;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    font-size: calc(10px + 2vmin);
-    color: rgb(8, 7, 7);
-  }
-  
-  .Startseite-beschreibung {
-    background-color: #beb4aa;
-    text-align: center;
-  }
-  
-  .logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.993);
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: 15px;
-    background-color: #c06a08;
-  }
-  
-  .logo_h2 {
-    color: #2e1d08;
-    font-size: 1rem;
-    flex: 5;
-    margin: 0 1rem;
-    color: white;
-  }
-  
-  .logo_beschreibung {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-end;
-    flex-flow: column-reverse;
-    justify-content: flex-start;
-    flex: 1;
-  }
-  
-  .expense-item__price {
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #40005d;
-    border: 1px solid white;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
-  
-  @media (min-width: 580px) {
-    .logo_beschreibung {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-    }
-  
-    .logo_h2 {
-      font-size: 1.25rem;
-    }
-  
-    .logo_extra {
-      font-size: 1.25rem;
-      padding: 0.5rem 1.5rem;
-    }
-  }
-  .Ende-header {
-    background-color: #968c81;
-    text-align: center;
-    min-height: 50vh;
-    display: flex;
-    position: static;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    font-size: calc(10px + 2vmin);
-    color: rgb(8, 7, 7);
+:root {
+  --primary-color: #d47107;
+  --secondary-color: blue;
+  --background-color: rgb(77, 76, 76);
 }
 
-.Ende-beschreibung {
-    background-color: #beb4aa;
-    text-align: center;
+/* Utilities */
+* {
+  box-sizing: border-box;
+  background: var(--background-color);
+  padding: 0;
+  margin: 0;
 }
-
 
 .button {
-    display: flex;
-    justify-content: space-between;
+  background: var(--primary-color);
+  color: #fff;
+  /* align-items: center; */
+  border: 3px #333 solid;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.button:hover {
+  opacity: 0.8;
+  border: 1px white solid;
+  cursor: pointer;
+}
+.button:active {
+  background: #f1a656;
+}
+h1 {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  border: 3px #333 solid;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  margin: 1rem 1rem;
+}
+.logo {
+  border-radius: 12px;
+  background: var(--primary-color);
+  justify-content: center;
+  align-items: center;
+  margin: 0 33%;
+}
+.button-icon {
+  background: green;
+}
+/* Verbindung-Seite */
+
+.container-verbindung .button {
+  width: 10rem;
+  height: 3rem;
+  margin: 1rem;
+}
+.container-verbindung .buttons-verbindung {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-end;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+/* Verbindungsanzeige */
+.container-verbindungsanzeige {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+.container-verbindungsanzeige .verbindung-textfeld {
+  background: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 3px solid #333;
+  border-radius: 12px;
+  /* width: 150px; */
+  margin-top: 3rem;
+}
+/* Search-Page */
+
+.container-searchpage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+.container-searchpage input {
+  background: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 3px solid #333;
+  border-radius: 12px;
+  /* width: 150px; */
+  margin-top: 3rem;
+}
+.button-search {
+  /* position: relative; */
+  float: right;
+  width: 10rem;
+  height: 3rem;
+  margin: 1rem;
+  margin-right: 3rem;
+}
+.button-swap {
+  border: none;
+  background: var(--background-color);
+  height: 2.7em;
+  width: 2.7em;
+  border-radius: 0;
+  margin: auto;
+  margin-top: 3rem;
+}
+.button-swap:hover {
+  opacity: 1;
+  border: none;
+  cursor: pointer;
+}
+.button-swap:active {
+  opacity: 0.5;
+}
+
+/* .container-searchpage button {
+  background: #fff;
+} */
+/* Starseite */
+
+/* Mobile */
+@media (max-width: 500px) {
+  h1 {
+    max-width: auto;
+    height: 70px;
+    text-align: center;
+    justify-content: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+  }
+  .container-verbindungsanzeige {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container-verbindungsanzeige .verbindung-textfeld {
+    /* width: 120px; */
+    /* height: 60px; */
+    width: auto;
+    height: auto;
+    font-size: medium;
+    margin: 15px 10px;
+    padding: auto;
+    text-align: center;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(1) {
+    order: 4;
+    min-height: 80px;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(2) {
+    order: 2;
+    grid-column: 1 / span 2;
+    justify-content: center;
+    font-size: x-large;
+    height: 50px;
+    padding: 5px;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(3) {
+    order: 6;
+    min-height: 80px;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(4) {
+    order: 2;
+    min-height: 80px;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(5) {
+    display: none;
+    order: 1;
+    min-height: 80px;
+  }
+  .container-verbindungsanzeige .verbindung-textfeld:nth-child(6) {
+    order: 5;
+    min-height: 80px;
+  }
+
+  .container-verbindung .button {
+    width: 150px;
+    height: 3rem;
+  }
+  .container-verbindung .buttons-verbindung {
+    flex-direction: row;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.993);
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: 15px;
-    background-color: #c06a08;
-    font-weight: bold
-    
+    justify-content: center;
+    margin: auto;
   }
-  
-  .button_h2 {
-    color: #2e1d08;
-    font-size: 1rem;
-    flex: 5;
-    margin: 0 1rem;
-    color: rgb(8, 4, 4);
+  .logo {
+    border-radius: 12px;
+    background: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    margin-top: 100px;
   }
-  
+  /* Search Page */
+  .container-searchpage {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .container-searchpage input {
+    width: auto;
+    height: auto;
+    font-size: medium;
+    margin: 15px 10px;
+    padding: auto;
+    text-align: center;
+  }
+  .container-searchpage input:nth-child(4) {
+    margin-top: 30px;
+  }
+  .button-search {
+    display: block;
+    float: none;
+    width: 10rem;
+    height: 3rem;
+    margin: auto;
+  }
+  .button-swap {
+    border: none;
+    background: var(--background-color);
+    height: 2.7em;
+    width: 2.7em;
+    border-radius: 0;
+    margin: 15px auto;
+    padding: auto;
+  }
+}
