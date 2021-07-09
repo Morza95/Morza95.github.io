@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../Style.css";
-import Card from "./UI/Card";
-import classes from "./Verbindung/Verbindungsanzeige.module.css";
+//import Card from "./UI/Card";
+//import classes from "./Verbindung/Verbindungsanzeige.module.css";
 import Button from "./UI/Button";
-import Logo from "./Logo.js";
+//import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
 import Ende from "./Ende.js";
 
@@ -35,40 +35,68 @@ const Verbindungsanzeige = (props) => {
   };
 
   return (
-    <Card className={classes.input}>
-       {/* {endClickHandler ? null:  */}
-        { hideConnectionDisplay? null: 
-          <form >
-          <header className="Verbindung-header">Verbindungen</header>
+    <div className="container-verbindung">
+      {/* {endClickHandler ? null:  */}
+      {hideConnectionDisplay ? null : (
+        <form>
+          <h1 className="Verbindung-header">Verbindungen</h1>
           {/* <Bild/> 
           <img src={require('.../public/busemoji.png')} />
           */}
-          <div className="Verbindung-textfeld-links">
-            {" "}  Abfahrt: Am {props.departureDay} um {props.departureTime} Uhr{" "} </div>
-          <div className="Verbindung-textfeld-mitte">Linie: 50</div>
-          <div className="Verbindung-textfeld-rechts">
-            Ankunft: Am {props.departureDay} um {props.departureTime} Uhr </div>
-          <div className="Verbindung-textfeld-links">
-            Abfahrt an Haltestelle: {props.departureStop} </div>
-          <div className="Verbindung-textfeld-rechts">
-            Ankunft an Haltestelle: {props.destinationStop} </div>
-          </form>
-        }
+          <div className="container-verbindungsanzeige">
+            <div className="verbindung-textfeld">
+              {" "}
+              Abfahrt: Am {props.departureDay} um {props.departureTime} Uhr{" "}
+            </div>
+            <div className="verbindung-textfeld">Linie: 50</div>
+            <div className="verbindung-textfeld">
+              Ankunft: Am {props.departureDay} um {props.departureTime} Uhr{" "}
+            </div>
+            <div className="verbindung-textfeld">
+              Abfahrt an Haltestelle: {props.departureStop}{" "}
+            </div>
+            <br></br>
+            <div className="verbindung-textfeld">
+              Ankunft an Haltestelle: {props.destinationStop}{" "}
+            </div>
+          </div>
+          <div className="buttons-verbindung">
+            {clickedBack ? (
+              <SearchPage />
+            ) : (
+              <Button
+                className="button"
+                onClick={() => {
+                  setHideConnectionDisplay(true);
+                  backClickHandler();
+                }}
+                type="submit"
+              >
+                Zurück zur Suche
+              </Button>
+            )}
 
-          {clickedBack ? (  <SearchPage /> ) : (
-            <button onClick={()=> {setHideConnectionDisplay(true); backClickHandler();}} type="submit">
-              Zurück zur Suche
-            </button>)
-          }
+            {clickedEnd ? (
+              <Ende />
+            ) : (
+              <Button
+                className="button"
+                onClick={() => {
+                  endClickHandler();
+                  setHideConnectionDisplay(true);
+                }}
+                type="submit"
+              >
+                Test Beenden?
+              </Button>
+            )}
+          </div>
+          <h1 className="logo">Nav2Gö</h1>
+        </form>
+      )}
 
-          {clickedEnd ? ( <Ende /> ) : (
-            <button className='button' onClick={()=> {endClickHandler(); setHideConnectionDisplay(true);  }} type="submit">
-              Test Beenden?
-            </button>)
-          }
-          <Logo />
-        {/* } */}
-    </Card>
+      {/* } */}
+    </div>
   );
 };
 

@@ -55,7 +55,8 @@ h1 {
   height: 3rem;
   margin: 1rem;
 }
-.container-verbindung .buttons-verbindung {
+.container-verbindung .buttons-verbindung,
+.buttons-search-page {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -83,6 +84,7 @@ h1 {
   border-radius: 12px;
   /* width: 150px; */
   margin-top: 3rem;
+  min-height: 75px;
 }
 /* Search-Page */
 
@@ -107,7 +109,7 @@ h1 {
 }
 .button-search {
   /* position: relative; */
-  float: right;
+  /* float: right; */
   width: 10rem;
   height: 3rem;
   margin: 1rem;
@@ -200,7 +202,11 @@ h1 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: auto;
+  }
+  .container-verbindung .buttons-verbindung button {
+    margin: 20px;
+    min-height: 50px;
+    min-width: 150px;
   }
   .logo {
     border-radius: 12px;

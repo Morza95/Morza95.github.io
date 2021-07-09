@@ -9,9 +9,13 @@ import classes from "./UI/Seiten.module.css";
 
 const Startseite = (props) => {
   // ClickHandler
+  const [hideStartForm, setStartForm] = useState(false);
   const continueClickedHandler = () => {
     setContinueClicked(true);
   };
+
+
+
 
   const [clicked, setContinueClicked] = useState(false);
 
@@ -20,9 +24,11 @@ const Startseite = (props) => {
   };
   return (
     //Import von classes Styling - dem css Modul
-    <Card className={classes.input}>
+     <div>
+    {/* <Card className={classes.input}> */}
+    { hideStartForm? null:
       <form onSubmit={onClickHandler}>
-        {/* <fieldset disabled="disabled"> */}
+        
         <header className="Startseite-header">
           <Logo></Logo> {/*Einbindung des Logos Nav2Gö*/}
           <p> Willkommen! </p>
@@ -30,7 +36,7 @@ const Startseite = (props) => {
         </header>
         <p className="Startseite-beschreibung">
           {" "}
-          Hier folgt ein Text für die Beschreibung der Forschung, der DSGVO und
+          Hier folgt ein Text für die Beschreibung der Forschung und
           des Anwendungsfalls, was noch eingefügt wird! Wenn die Teilnehmer den
           Text gelesen haben, können Sie mit einem Klick auf den Button den Test
           beginnen!
@@ -42,10 +48,15 @@ const Startseite = (props) => {
             Weiter
           </Button>
         )}
-        {/* </fieldset> */}
-      </form>
-      {/* {clicked? <form disabled={true} />} */}
-    </Card>
+         {/* {clicked ? ( <SearchPage /> ) : (
+            <button className='button' onClick={()=> {continueClickedHandler(); setHideStartDisplay(true);  }} type="submit">
+              Weiter
+            </button>)
+          } */}
+       
+      </form>}
+      </div>
+    //</Card>
   );
 };
 

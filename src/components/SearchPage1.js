@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ErrorModal from "./UI/ErrorModal.js";
 import "../Style.css";
-import Verbindungsanzeige from "./Verbindungsanzeige.js";
+import Verbindungsanzeige from "./Verbindungsanzeige1.js";
 //import Verbindung from "./Verbindung.js";
 import Card from "./UI/Card.js";
 import classes from "./UI/Card.module.css";
 import Startseite from "./Startseite.js";
 import Button from "./UI/Button.js";
-import { BsArrowLeftRight } from "react-icons/bs";
 
 const SearchPage = (props) => {
   // useState
@@ -17,11 +16,11 @@ const SearchPage = (props) => {
   const [departureDay, setDepartureDay] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
   const [clickedBack, setBackClicked] = useState(false);
-  const [hideSearchFields, setHideSearchFields] = useState(false);
+  const [hideSearchFields,setHideSearchFields ]= useState(false);
 
-  let Error = true;
+  let Error = null;
 
   ////// References zu HTML Elementen //////
 
@@ -34,20 +33,20 @@ const SearchPage = (props) => {
 
   // Variante A (Lektion 112)
 
-  //   let myTimer;
+//   let myTimer;
 
-  //   const [timerIsActive, setTimerIsActive] = useState(false);
+//   const [timerIsActive, setTimerIsActive] = useState(false);
 
-  //   const { timerDuration } = props; // using destructuring to pull out specific props values
+//   const { timerDuration } = props; // using destructuring to pull out specific props values
 
-  //   useEffect(() => {
-  //     if (!timerIsActive) {
-  //       setTimerIsActive(true);
-  //       myTimer = setTimeout(() => {
-  //         setTimerIsActive(false);
-  //       }, timerDuration);
-  //     }
-  //   }, [timerIsActive, timerDuration]);
+//   useEffect(() => {
+//     if (!timerIsActive) {
+//       setTimerIsActive(true);
+//       myTimer = setTimeout(() => {
+//         setTimerIsActive(false);
+//       }, timerDuration);
+//     }
+//   }, [timerIsActive, timerDuration]);
 
   // Variante B (Lektion 113)
 
@@ -84,23 +83,23 @@ const SearchPage = (props) => {
     if (
       departureStop.trim().length === 0 ||
       //departureStop != "Gartenstraße" ||
-      //departureTime.trim().length === 0 ||
+      //departureTime ||
       destinationStop.trim().length === 0
     ) {
       return (
         setError({
           title: "Falsche Daten",
           message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
-        }) && Error === true
+        }), Error = true
       );
     }
-    return Error === false;
+    return Error = false;
   };
 
   ////////// ErrorHandler /////////
 
   const errorHandler = () => {
-    setError(null);
+    setError(false);
   };
 
   ////// Handler ///////
@@ -110,9 +109,9 @@ const SearchPage = (props) => {
     console.log(Error);
     //{Error? setSearchClicked(false) : setSearchClicked(true)}
     if (Error) {
-      return setSearchClicked(true) && console.log("weiter gehts");
+      return setSearchClicked(false), console.log("Fehler aufgetreten");
     }
-    return setSearchClicked(false) && console.log("Fehler Aufgetreten");
+    return setSearchClicked(true), console.log("weiter gehts");
   };
 
   const changeStopHandler = () => {
@@ -133,65 +132,50 @@ const SearchPage = (props) => {
     setDepartureTime(event.target.value);
   };
 
+
   /////////////////////////////////////////////
   //// return bei Searchpage Aufruf ///////////
   /////////////////////////////////////////////
 
   return (
     <React.Fragment>
-      {error && (
-        <ErrorModal
-          title={error.title}
-          message={error.message}
-          onConfirm={errorHandler}
-        />
-      )}
-      <h1> Verbindungs-Suche </h1>
-      <div>
-        {hideSearchFields ? null : (
-          <div className="container-searchpage">
-            <input
-              type="text"
-              value={departureStop}
-              onChange={departureChangeHandler}
-              placeholder="Start"
-              //ref={departureInputRef}
-            />
-            <button className="button button-swap" onClick={changeStopHandler}>
-              {" "}
-              <BsArrowLeftRight size="3em" />
-            </button>
-            <input
-              type="text"
-              value={destinationStop}
-              onChange={destinationStopHandler}
-              placeholder="Ziel"
-            />
-            <input
-              type="date"
-              value={departureDay}
-              onChange={departureDayHandler}
-            />
-            <br></br>
-            <input
-              type="time"
-              value={departureTime}
-              onChange={departureTimeHandler}
-              //ref={destinationInputRef}
-            />
-            <Button
-              className="button button-search"
-              onClick={() => {
-                searchClickedHandler();
-                setHideSearchFields(true);
-              }}
-            >
-              Suchen
-            </Button>
-          </div>
+      <Card className={classes.input}>
+        {Error && (
+          <ErrorModal
+            title={error.title}
+            message={error.message}
+            onConfirm={errorHandler}
+          />
         )}
-        <div className="buttons-search-page">
-          {searchClicked ? (
+      { hideSearchFields? null:
+        <div >
+          <input
+            type="text"
+            value={departureStop}
+            onChange={departureChangeHandler}
+            //ref={departureInputRef} 
+          />
+          <button onClick={changeStopHandler}>tauschen</button>
+          <input
+            type="text"
+            value={destinationStop}
+            onChange={destinationStopHandler}
+          />
+          <input
+            type="date"
+            value={departureDay}
+            onChange={departureDayHandler}
+          />
+          <input
+            type="time"
+            value={departureTime}
+            onChange={departureTimeHandler}
+            //ref={destinationInputRef}
+          />
+          <button onClick={()=> {searchClickedHandler(); {setHideSearchFields(true)} }}>Suchen</button>
+        </div>
+        }
+                  {searchClicked ? (
             <Verbindungsanzeige
               departureStop={departureStop}
               destinationStop={destinationStop}
@@ -200,15 +184,14 @@ const SearchPage = (props) => {
             />
           ) : null}
 
-          {clickedBack ? (
-            <Startseite />
-          ) : (
-            <Button className="button" onClick={backClickHandler} type="submit">
-              Zurück zur Startseite
-            </Button>
-          )}
-        </div>
-      </div>
+        {clickedBack ? (
+          <Startseite />
+        ) : (
+          <button onClick={backClickHandler} type="submit">
+            Zurück zur Startseite
+          </button>
+        )}
+      </Card>
     </React.Fragment>
   );
 };
