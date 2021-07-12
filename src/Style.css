@@ -80,8 +80,8 @@ p {
   margin: 1rem;
 }
 
-/* Verbindungsanzeige */
-.container-verbindungsanzeige {
+/* ConnectionDisplay */
+.container-ConnectionDisplay {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -89,7 +89,7 @@ p {
   padding: 1rem;
   margin: 1rem;
 }
-.container-verbindungsanzeige .verbindung-textfeld {
+.container-ConnectionDisplay .verbindung-textfeld {
   background: #fff;
   font-weight: bold;
   text-align: center;
@@ -172,11 +172,11 @@ p {
     height: 50px;
     width: 150px;
   }
-  .container-verbindungsanzeige {
+  .container-ConnectionDisplay {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .container-verbindungsanzeige .verbindung-textfeld {
+  .container-ConnectionDisplay .verbindung-textfeld {
     /* width: 120px; */
     /* height: 60px; */
     width: auto;
@@ -186,11 +186,11 @@ p {
     padding: auto;
     text-align: center;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(1) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(1) {
     order: 4;
     min-height: 80px;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(2) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(2) {
     order: 2;
     grid-column: 1 / span 2;
     justify-content: center;
@@ -198,20 +198,20 @@ p {
     height: 50px;
     padding: 5px;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(3) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(3) {
     order: 6;
     min-height: 80px;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(4) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(4) {
     order: 2;
     min-height: 80px;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(5) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(5) {
     display: none;
     order: 1;
     min-height: 80px;
   }
-  .container-verbindungsanzeige .verbindung-textfeld:nth-child(6) {
+  .container-ConnectionDisplay .verbindung-textfeld:nth-child(6) {
     order: 5;
     min-height: 80px;
   }

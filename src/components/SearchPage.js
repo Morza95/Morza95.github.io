@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import ErrorModal from "./UI/ErrorModal.js";
+import ErrorModal from "./ErrorHandler/ErrorModal.js";
 import "../Style.css";
-import Verbindungsanzeige from "./Verbindungsanzeige.js";
-//import Verbindung from "./Verbindung.js";
-import Card from "./UI/Card.js";
-import classes from "./UI/Card.module.css";
-import Startseite from "./Startseite.js";
-import Button from "./UI/Button.js";
+import Verbindungsanzeige from "./ConnectionDisplay.js";
+import StartPage from "./StartPage.js";
 import { BsArrowLeftRight } from "react-icons/bs";
+import ConnectionDisplay from "./ConnectionDisplay.js";
 
 const SearchPage = (props) => {
   // useState
@@ -18,7 +15,6 @@ const SearchPage = (props) => {
   const [departureTime, setDepartureTime] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
   const [error, setError] = useState();
-  const [clickedBack, setBackClicked] = useState(false);
   const [hideSearchFields, setHideSearchFields] = useState(false);
 
   let Error = true;
@@ -70,7 +66,7 @@ const SearchPage = (props) => {
   //   }, [departureStop]);    //
 
   const backClickHandler = () => {
-    setBackClicked(true);
+    props.onGoBack();
   };
 
   const departureChangeHandler = (event) => {
@@ -106,13 +102,14 @@ const SearchPage = (props) => {
   ////// Handler ///////
 
   const searchClickedHandler = () => {
-    errorPrevent();
-    console.log(Error);
-    //{Error? setSearchClicked(false) : setSearchClicked(true)}
-    if (Error) {
-      return setSearchClicked(true) && console.log("weiter gehts");
-    }
-    return setSearchClicked(false) && console.log("Fehler Aufgetreten");
+    setSearchClicked(true);
+    // errorPrevent();
+    // console.log(Error);
+    // //{Error? setSearchClicked(false) : setSearchClicked(true)}
+    // if (Error) {
+    //   return setSearchClicked(true) && console.log("weiter gehts");
+    // }
+    // return setSearchClicked(false) && console.log("Fehler Aufgetreten");
   };
 
   const changeStopHandler = () => {
@@ -146,9 +143,9 @@ const SearchPage = (props) => {
           onConfirm={errorHandler}
         />
       )}
-      <h1> Verbindungs-Suche </h1>
-      <div>
         {hideSearchFields ? null : (
+          <div>
+       <h1> Verbindungs-Suche </h1>
           <div className="container-searchpage">
             <input
               list="haltestellen"
@@ -178,43 +175,41 @@ const SearchPage = (props) => {
             <input
               type="time"
               value={departureTime}
-              onChange={departureTimeHandler}
+              onChange={departureTimeHandler }
               //ref={destinationInputRef}
             />
           </div>
-        )}
+          </div>
+        ) }
         <div className="buttons-search-page">
-          <button
-            className="button-search"
-            onClick={() => {
-              searchClickedHandler();
-              setHideSearchFields(true);
-            }}
-          >
-            Suchen
-          </button>
+
           {searchClicked ? (
-            <Verbindungsanzeige
+            <ConnectionDisplay onGoBack={()=> setHideSearchFields(false) }
               departureStop={departureStop}
               destinationStop={destinationStop}
               departureDay={departureDay}
               departureTime={departureTime}
             />
-          ) : null}
+          ) : 
+          (<button
+          className="button-search"
+          onClick={() => {
+            searchClickedHandler();
+            setHideSearchFields(true);
+          }}
+        >
+          Suchen
+        </button>)
+        }
 
-          {clickedBack ? (
-            <Startseite />
-          ) : (
             <button
               className="button-search"
               onClick={backClickHandler}
-              type="submit"
-            >
+              type="submit">
               Zurück zur Startseite
             </button>
-          )}
+        
         </div>
-      </div>
       <datalist id="haltestellen">
         <option value="Hauptbahnhof"></option>
         <option value="Auf dem Hagen"></option>

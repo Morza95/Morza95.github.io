@@ -1,27 +1,24 @@
 import React from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
-import Button from "./UI/Button";
-import Card from "./UI/Card";
-import classes from "./UI/Seiten.module.css";
 
-const Ende = () => {
+const End = () => {
 
   // Button Click Handler einfügen
 
   
   return (
-    <Card className={classes.input}>
+    <div >
       <form>
         <header className="Startseite-header">
           <Logo></Logo> {/*Einbindung des Logos Nav2Gö*/}
           <p> Danke für die Teilnahme! </p>
           <p> Klicke jetzt bitte auf den Button, um zur Umfrage zu gelangen </p>
         </header>
-        <Button type="submit">Zurück auf Anfang</Button>
+        <button type="submit">Zurück auf Anfang</button>
       </form>
-    </Card>
+    </div>
   );
 };
 
-export default Ende;
+export default End;

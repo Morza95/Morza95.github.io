@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "../Style.css";
-import Card from "./UI/Card";
-import classes from "./Verbindung/Verbindungsanzeige.module.css";
-import Button from "./UI/Button";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
-import Ende from "./Ende.js";
+import Ende from "./End.js";
 
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
@@ -17,9 +14,8 @@ function Header() {
   return <img src={logo} alt="Logo" />;
 }
  */
-const Verbindungsanzeige = (props) => {
+const ConnectionDisplay = (props) => {
   // Button - useState
-  const [clickedBack, setBackClicked] = useState(false);
   const [clickedEnd, setEndClicked] = useState(false);
   const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
 
@@ -28,7 +24,7 @@ const Verbindungsanzeige = (props) => {
   // };
 
   const backClickHandler = () => {
-    setBackClicked(true);
+    props.onGoBack();
   };
   const endClickHandler = () => {
     setEndClicked(true);
@@ -43,7 +39,7 @@ const Verbindungsanzeige = (props) => {
           {/* <Bild/> 
           <img src={require('.../public/busemoji.png')} />
           */}
-          <div className="container-verbindungsanzeige">
+          <div className="container-ConnectionDisplay">
             <div className="verbindung-textfeld">
               {" "}
               <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
@@ -61,9 +57,6 @@ const Verbindungsanzeige = (props) => {
             </div>
           </div>
           <div className="buttons-verbindung">
-            {clickedBack ? (
-              <SearchPage />
-            ) : (
               <button
                 className="button"
                 onClick={() => {
@@ -71,10 +64,8 @@ const Verbindungsanzeige = (props) => {
                   backClickHandler();
                 }}
                 type="submit"
-              >
-                Zurück zur Suche
+              > Zurück 
               </button>
-            )}
 
             {clickedEnd ? (
               <Ende />
@@ -95,9 +86,9 @@ const Verbindungsanzeige = (props) => {
         </form>
       )}
 
-      {/* } */}
+      {/* } */}'
     </div>
   );
 };
 
-export default Verbindungsanzeige;
+export default ConnectionDisplay;
