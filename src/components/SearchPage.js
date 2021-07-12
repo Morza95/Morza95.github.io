@@ -151,6 +151,7 @@ const SearchPage = (props) => {
         {hideSearchFields ? null : (
           <div className="container-searchpage">
             <input
+              list="haltestellen"
               type="text"
               value={departureStop}
               onChange={departureChangeHandler}
@@ -162,6 +163,7 @@ const SearchPage = (props) => {
               <BsArrowLeftRight size="3em" />
             </button>
             <input
+              list="haltestellen"
               type="text"
               value={destinationStop}
               onChange={destinationStopHandler}
@@ -179,18 +181,18 @@ const SearchPage = (props) => {
               onChange={departureTimeHandler}
               //ref={destinationInputRef}
             />
-            <Button
-              className="button button-search"
-              onClick={() => {
-                searchClickedHandler();
-                setHideSearchFields(true);
-              }}
-            >
-              Suchen
-            </Button>
           </div>
         )}
         <div className="buttons-search-page">
+          <button
+            className="button-search"
+            onClick={() => {
+              searchClickedHandler();
+              setHideSearchFields(true);
+            }}
+          >
+            Suchen
+          </button>
           {searchClicked ? (
             <Verbindungsanzeige
               departureStop={departureStop}
@@ -203,12 +205,50 @@ const SearchPage = (props) => {
           {clickedBack ? (
             <Startseite />
           ) : (
-            <Button className="button" onClick={backClickHandler} type="submit">
+            <button
+              className="button-search"
+              onClick={backClickHandler}
+              type="submit"
+            >
               Zurück zur Startseite
-            </Button>
+            </button>
           )}
         </div>
       </div>
+      <datalist id="haltestellen">
+        <option value="Hauptbahnhof"></option>
+        <option value="Auf dem Hagen"></option>
+        <option value="Tulpenweg"></option>
+        <option value="Schützenplatz"></option>
+        <option value="Landgericht/Bahnhof"></option>
+        <option value="Bürgerstraße"></option>
+        <option value="Hiroshimaplatz"></option>
+        <option value="Schillerstraße"></option>
+        <option value="Reinholdstraße"></option>
+        <option value="Fritz-Reuter-Straße"></option>
+        <option value="Treuenhagen"></option>
+        <option value="Baumschulenweg"></option>
+        <option value="Stadtstieg"></option>
+        <option value="Kiesseestraße"></option>
+        <option value="Teichstraße"></option>
+        <option value="Bornbreite"></option>
+        <option value="Gehrenring"></option>
+        <option value="Burckhardtweg"></option>
+        <option value="Tammannstraße"></option>
+        <option value="Klinikum"></option>
+        <option value="Krugstraße"></option>
+        <option value="Deisterstraße"></option>
+        <option value="Elmweg"></option>
+        <option value="Sollingstraße"></option>
+        <option value="Bramwaldstraße"></option>
+        <option value="Siekweg"></option>
+        <option value="Klosterweg"></option>
+        <option value="Lutteranger"></option>
+        <option value="An der Lutte"></option>
+        <option value="Grüner Weg"></option>
+        <option value="Liebrechtstraße"></option>
+        <option value="Kreuzbergring"></option>
+      </datalist>
     </React.Fragment>
   );
 };

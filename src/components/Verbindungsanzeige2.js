@@ -43,28 +43,27 @@ const Verbindungsanzeige = (props) => {
           {/* <Bild/> 
           <img src={require('.../public/busemoji.png')} />
           */}
-          <div className="container-verbindungsanzeige">
-            <div className="verbindung-textfeld">
+          <div ckassName="container-verbindungsanzeige">
+            <div className="Verbindung-textfeld-links">
               {" "}
-              <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
+              Abfahrt: Am {props.departureDay} um {props.departureTime} Uhr{" "}
             </div>
-            <div className="verbindung-textfeld">Linie: 50</div>
-            <div className="verbindung-textfeld">
-              <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
+            <div className="Verbindung-textfeld-mitte">Linie: 50</div>
+            <div className="Verbindung-textfeld-rechts">
+              Ankunft: Am {props.departureDay} um {props.departureTime} Uhr{" "}
             </div>
-            <div className="verbindung-textfeld">
-              <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
+            <div className="Verbindung-textfeld-links">
+              Abfahrt an Haltestelle: {props.departureStop}{" "}
             </div>
-            <br></br>
-            <div className="verbindung-textfeld">
-              <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
+            <div className="Verbindung-textfeld-rechts">
+              Ankunft an Haltestelle: {props.destinationStop}{" "}
             </div>
           </div>
           <div className="buttons-verbindung">
             {clickedBack ? (
               <SearchPage />
             ) : (
-              <button
+              <Button
                 className="button"
                 onClick={() => {
                   setHideConnectionDisplay(true);
@@ -73,13 +72,13 @@ const Verbindungsanzeige = (props) => {
                 type="submit"
               >
                 Zurück zur Suche
-              </button>
+              </Button>
             )}
 
             {clickedEnd ? (
               <Ende />
             ) : (
-              <button
+              <Button
                 className="button"
                 onClick={() => {
                   endClickHandler();
@@ -88,7 +87,7 @@ const Verbindungsanzeige = (props) => {
                 type="submit"
               >
                 Test Beenden?
-              </button>
+              </Button>
             )}
           </div>
           <h1 className="logo">Nav2Gö</h1>
