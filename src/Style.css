@@ -59,10 +59,48 @@ p {
   justify-content: center;
   align-items: center;
   margin: 0 33%;
+  margin-top: 10px;
 }
 .button-icon {
   background: green;
 }
+/* Start-Button Page */
+
+#containerStartButtonPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#containerStartButtonPage button {
+  height: 100px;
+  width: 200px;
+  margin-top: 100px;
+}
+
+/* Start Page */
+#welcomeText {
+  margin: 1rem 2rem;
+  padding: 2rem 2rem;
+}
+#welcomeText p {
+  background: #333;
+  color: #fff;
+
+  padding: 0 2rem;
+}
+#welcomeTextButton {
+  float: right;
+  margin-right: 4rem;
+}
+
+#welcomeText p:first-child {
+  padding-top: 1rem;
+}
+#welcomeText p:last-child {
+  padding-bottom: 1rem;
+}
+
 /* Verbindung-Seite */
 
 .container-verbindung .button {
@@ -136,11 +174,12 @@ p {
 .button-swap {
   border: none;
   background: var(--background-color);
-  height: 2.7em;
-  width: 2.7em;
+  max-height: 2.7em;
+  max-width: 2.7em;
   border-radius: 0;
+  padding: 0;
   margin: auto;
-  margin-top: 3rem;
+  margin-bottom: 5rem;
 }
 .button-swap:hover {
   opacity: 0.8;
@@ -171,6 +210,8 @@ p {
   button {
     height: 50px;
     width: 150px;
+    padding: 0;
+    margin: 0;
   }
   .container-ConnectionDisplay {
     grid-template-columns: repeat(2, 1fr);
@@ -269,11 +310,12 @@ p {
   .button-swap {
     border: none;
     background: var(--background-color);
-    height: 2.7em;
-    width: 2.7em;
+    height: 1.7rem;
+    width: 1.7rem;
     border-radius: 0;
     margin: 15px auto;
     padding: auto;
     transform: rotate(90deg);
+    margin-bottom: 50px;
   }
 }

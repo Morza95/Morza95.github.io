@@ -91,9 +91,9 @@ const SearchPage = (props) => {
           onConfirm={errorHandler}
         />
       )}
-        {hideSearchFields ? null : (
-          <div>
-       <h1> Verbindungs-Suche </h1>
+      {hideSearchFields ? null : (
+        <div>
+          <h1> Verbindungs-Suche </h1>
           <div className="container-searchpage">
             <input
               list="haltestellen"
@@ -103,9 +103,9 @@ const SearchPage = (props) => {
               placeholder="Start"
               //ref={departureInputRef}
             />
-            <button className="button button-swap" onClick={changeStopHandler}>
+            <button className="button-swap" onClick={changeStopHandler}>
               {" "}
-              <BsArrowLeftRight size="3em" />
+              <BsArrowLeftRight size="3rem" />
             </button>
             <input
               list="haltestellen"
@@ -123,39 +123,43 @@ const SearchPage = (props) => {
             <input
               type="time"
               value={departureTime}
-              onChange={departureTimeHandler }
+              onChange={departureTimeHandler}
               //ref={destinationInputRef}
             />
           </div>
-          </div>
-        ) }
-        <div className="buttons-search-page">
-
-          {searchClicked ? (
-            <ConnectionDisplay onGoBack={()=> {setHideSearchFields(false); setSearchClicked(false);} }
-              departureStop={departureStop}
-              destinationStop={destinationStop}
-              departureDay={departureDay}
-              departureTime={departureTime }
-            />
-          ) : 
-          (<button
-          className="button-search"
-          onClick={() => {
-            searchClickedHandler();
-            setHideSearchFields(true);
-          }} >
-          Suchen
-        </button>)
-        }
-        <button
-              className="button-search"
-              onClick={backClickHandler}
-              type="submit">
-              Zurück zur Startseite
-       </button>
-        
         </div>
+      )}
+      <div className="buttons-search-page">
+        {searchClicked ? (
+          <ConnectionDisplay
+            onGoBack={() => {
+              setHideSearchFields(false);
+              setSearchClicked(false);
+            }}
+            departureStop={departureStop}
+            destinationStop={destinationStop}
+            departureDay={departureDay}
+            departureTime={departureTime}
+          />
+        ) : (
+          <button
+            className="button-search"
+            onClick={() => {
+              searchClickedHandler();
+              setHideSearchFields(true);
+            }}
+          >
+            Suchen
+          </button>
+        )}
+        <button
+          className="button-search"
+          onClick={backClickHandler}
+          type="submit"
+        >
+          Zurück zur Startseite
+        </button>
+      </div>
       <datalist id="haltestellen">
         <option value="Hauptbahnhof"></option>
         <option value="Auf dem Hagen"></option>
