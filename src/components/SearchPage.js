@@ -17,54 +17,6 @@ const SearchPage = (props) => {
   const [error, setError] = useState();
   const [hideSearchFields, setHideSearchFields] = useState(false);
 
-  let Error = true;
-
-  ////// References zu HTML Elementen //////
-
-  // const departureInputRef = useRef();
-  // const destinationInputRef = useRef();
-  //const departureTimeInputRef= useRef();
-  //const departureDayInputRef = useRef();
-
-  /////// DUMMY TimeOut /////////////
-
-  // Variante A (Lektion 112)
-
-  //   let myTimer;
-
-  //   const [timerIsActive, setTimerIsActive] = useState(false);
-
-  //   const { timerDuration } = props; // using destructuring to pull out specific props values
-
-  //   useEffect(() => {
-  //     if (!timerIsActive) {
-  //       setTimerIsActive(true);
-  //       myTimer = setTimeout(() => {
-  //         setTimerIsActive(false);
-  //       }, timerDuration);
-  //     }
-  //   }, [timerIsActive, timerDuration]);
-
-  // Variante B (Lektion 113)
-
-  // setTimeout(() => {
-  //   Input oder Funktion die Ausgeführt werden soll
-  // }, 500);    // 500ms Pausentimer - Lektion 113
-
-  /// Timeout mit useEffect
-  //   useEffect(() => {              // wird direkt ausgeführt bei aufruf der Seite, ausser man hängt einen Array hinten dran
-  //     setTimeout(() => {
-  //       console.log("Timer ausgeführt");
-  //       setFormIsValid(
-  //           departureStop === "Gartenstraße"  // Prüfen ob valide Eingabe
-  //       );
-  //     },500);             // Timer für 500ms
-  //     return () => {
-  //         console.log('Cleanup')      // CleanUp um eine KeyStroke-Ausführung des UseEffects zu vermeiden und stattdessen nur alle 500ms die Validität zu prüfen
-  //         clearTimeout(identifier);   // damit das funktioniert, müsste const identifier = setTimeout(() => {usw. }) verwendet werden
-  //     };
-  //   }, [departureStop]);    //
-
   const backClickHandler = () => {
     props.onGoBack();
   };
@@ -130,10 +82,6 @@ const SearchPage = (props) => {
     setDepartureTime(event.target.value);
   };
 
-  /////////////////////////////////////////////
-  //// return bei Searchpage Aufruf ///////////
-  /////////////////////////////////////////////
-
   return (
     <React.Fragment>
       {error && (
@@ -184,7 +132,7 @@ const SearchPage = (props) => {
         <div className="buttons-search-page">
 
           {searchClicked ? (
-            <ConnectionDisplay onGoBack={()=> setHideSearchFields(false) }
+            <ConnectionDisplay onGoBack={()=> {setHideSearchFields(false); setSearchClicked(false);} }
               departureStop={departureStop}
               destinationStop={destinationStop}
               departureDay={departureDay}
@@ -196,18 +144,16 @@ const SearchPage = (props) => {
           onClick={() => {
             searchClickedHandler();
             setHideSearchFields(true);
-          }}
-        >
+          }} >
           Suchen
         </button>)
         }
-
-            <button
+        <button
               className="button-search"
               onClick={backClickHandler}
               type="submit">
               Zurück zur Startseite
-            </button>
+       </button>
         
         </div>
       <datalist id="haltestellen">

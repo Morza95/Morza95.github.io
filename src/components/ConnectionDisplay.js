@@ -19,10 +19,6 @@ const ConnectionDisplay = (props) => {
   const [clickedEnd, setEndClicked] = useState(false);
   const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
 
-  // const onClickHandler = () => {
-  //   // event.preventDefault(); // Aktuell: Neuladen der Seite verhindern
-  // };
-
   const backClickHandler = () => {
     props.onGoBack();
   };
