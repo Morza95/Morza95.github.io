@@ -136,7 +136,7 @@ const SearchPage = (props) => {
               departureStop={departureStop}
               destinationStop={destinationStop}
               departureDay={departureDay}
-              departureTime={departureTime}
+              departureTime={departureTime }
             />
           ) : 
           (<button

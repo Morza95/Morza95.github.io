@@ -13,6 +13,7 @@ const StartPage = (props) => {
     setCallSearchPage(true);
   };
 
+
   return (
     //Import von classes Styling - dem css Modul
      <div>

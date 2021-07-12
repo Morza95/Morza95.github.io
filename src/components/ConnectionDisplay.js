@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,} from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
 import Ende from "./End.js";
+
 
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
@@ -17,7 +18,8 @@ function Header() {
 const ConnectionDisplay = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
-  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
+  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(true);
+ 
 
   const backClickHandler = () => {
     props.onGoBack();
@@ -25,6 +27,15 @@ const ConnectionDisplay = (props) => {
   const endClickHandler = () => {
     setEndClicked(true);
   };
+
+  // für die verzögerung: use effect importieren
+  //todo: dann noch loading bar hinzufügen
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //  setHideConnectionDisplay(false)
+  //   }, 7000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className="container-verbindung">
