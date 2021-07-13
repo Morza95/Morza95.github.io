@@ -208,11 +208,24 @@ p {
     margin-top: 20px;
   }
   button {
-    height: 50px;
-    width: 150px;
+    max-height: 50px;
+    max-width: 150px;
     padding: 0;
     margin: 0;
   }
+  /* StartPage */
+
+  .StartPage-header h1 {
+  }
+  #welcomeTextButton {
+    padding: 1rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  /* Connection Display */
   .container-ConnectionDisplay {
     grid-template-columns: repeat(2, 1fr);
   }
