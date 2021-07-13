@@ -2,7 +2,7 @@ import React, { useState,} from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
-import Ende from "./End.js";
+import End from "./End.js";
 
 
 //import 'webpack';
@@ -18,7 +18,7 @@ function Header() {
 const ConnectionDisplay = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
-  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(true);
+  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
  
 
   const backClickHandler = () => {
@@ -67,15 +67,17 @@ const ConnectionDisplay = (props) => {
               <button
                 className="button"
                 onClick={() => {
-                  setHideConnectionDisplay(true);
-                  backClickHandler();
+                  
                 }}
                 type="submit"
               > Zurück 
               </button>
 
             {clickedEnd ? (
-              <Ende />
+              <End onGoBack={() => {
+                setHideConnectionDisplay(false);
+                setEndClicked(false);
+              }}/>
             ) : (
               <button
                 className="button"
