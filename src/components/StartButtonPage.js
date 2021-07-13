@@ -10,7 +10,11 @@ const StartButtonPage = () => {
       {clicked ? (
         <Startseite />
       ) : (
-        <button disabled={clicked} onClick={() => setClicked(true)}>
+        <button
+          class="buttonStartButton"
+          disabled={clicked}
+          onClick={() => setClicked(true)}
+        >
           {" "}
           Start Nav2Gö{" "}
         </button>

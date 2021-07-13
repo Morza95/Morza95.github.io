@@ -64,7 +64,7 @@ const SearchPage = (props) => {
     // return setSearchClicked(false) && console.log("Fehler Aufgetreten");
   };
 
-    // In "Update" von Kai funktioniert es noch
+  // In "Update" von Kai funktioniert es noch
   const changeStopHandler = () => {
     let a = departureStop;
     setDepartureStop(destinationStop);
@@ -143,24 +143,24 @@ const SearchPage = (props) => {
           />
         ) : (
           <div>
-          <button
-            className="button-search"
-            onClick={() => {
-              searchClickedHandler();
-              setHideSearchFields(true);
-            }}
-          >
-            Suchen
-          </button>
-           <button
-           className="button-search"
-           onClick={backClickHandler}
-           type="submit"
-         >
-           Zurück zur Startseite
-         </button> </div>
+            <button
+              className="button-search"
+              onClick={() => {
+                searchClickedHandler();
+                setHideSearchFields(true);
+              }}
+            >
+              Suchen
+            </button>
+            <button
+              className="button-search"
+              onClick={backClickHandler}
+              type="submit"
+            >
+              Zurück zur Startseite
+            </button>{" "}
+          </div>
         )}
-       
       </div>
       <datalist id="haltestellen">
         <option value="Hauptbahnhof"></option>
