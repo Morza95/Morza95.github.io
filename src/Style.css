@@ -83,11 +83,13 @@ p {
 }
 
 /* Start Page */
-#welcomeText {
+#welcomeText,
+#endText {
   margin: 1rem 2rem;
   padding: 2rem 2rem;
 }
-#welcomeText p {
+#welcomeText p,
+#endText p {
   background: #333;
   color: #fff;
 
@@ -201,6 +203,29 @@ p {
 } */
 /* Starseite */
 
+/* Endseite */
+a {
+  text-decoration: none;
+  background: red;
+  color: #fff;
+  /* align-items: center; */
+  border: 3px #333 solid;
+  border-radius: 12px;
+  font-weight: bold;
+  min-width: 200px;
+  min-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 8px;
+}
+#containerButtonEnd {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#containerButtonEnd button {
+  min-width: 200px;
+  margin-right: 10px;
+}
 /* Mobile */
 @media (max-width: 500px) {
   h1 {
@@ -222,8 +247,6 @@ p {
 
   /* StartPage */
 
-  /* .StartPage-header h1 {
-  } */
   #welcomeTextButton {
     padding: 1rem;
     margin: 0;
