@@ -102,7 +102,6 @@ const SearchPage = (props) => {
               value={departureStop}
               onChange={departureChangeHandler}
               placeholder="Start"
-              //ref={departureInputRef}
             />
             <button className="button-swap" onClick={changeStopHandler}>
               {" "}
@@ -125,7 +124,7 @@ const SearchPage = (props) => {
               type="time"
               value={departureTime}
               onChange={departureTimeHandler}
-              //ref={destinationInputRef}
+              
             />
           </div>
         </div>

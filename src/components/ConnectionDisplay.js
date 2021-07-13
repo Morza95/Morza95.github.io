@@ -38,14 +38,12 @@ const ConnectionDisplay = (props) => {
   // }, []);
 
   return (
+    
     <div className="container-verbindung">
-      {/* {endClickHandler ? null:  */}
+     
       {hideConnectionDisplay ? null : (
-        <form>
+        <div>
           <h1 className="Verbindung-header">Verbindungen</h1>
-          {/* <Bild/> 
-          <img src={require('.../public/busemoji.png')} />
-          */}
           <div className="container-ConnectionDisplay">
             <div className="verbindung-textfeld">
               {" "}
@@ -63,20 +61,21 @@ const ConnectionDisplay = (props) => {
               <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
             </div>
           </div>
+              </div> )}
+          
           <div className="buttons-verbindung">
               <button
                 className="button"
-                onClick={() => {
-                  
-                }}
+                onClick={backClickHandler}
                 type="submit"
               > Zurück 
               </button>
+              
 
             {clickedEnd ? (
               <End onGoBack={() => {
-                setHideConnectionDisplay(false);
-                setEndClicked(false);
+                // setHideConnectionDisplay(false);
+                // setEndClicked(false);
               }}/>
             ) : (
               <button
@@ -91,12 +90,7 @@ const ConnectionDisplay = (props) => {
               </button>
             )}
           </div>
-          <h1 className="logo">Nav2Gö</h1>
-        </form>
-      )}
-
-      {/* } */}'
-    </div>
+          </div>
   );
 };
 

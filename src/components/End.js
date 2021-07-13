@@ -14,6 +14,7 @@ const End = () => {
           <Logo></Logo> {/*Einbindung des Logos Nav2Gö*/}
           <p> Danke für die Teilnahme! </p>
           <p> Klicke jetzt bitte auf den Button, um zur Umfrage zu gelangen </p>
+          <a href="https://google.de">Hier zur Umfrage</a>
         </header>
         <button type="submit">Zurück auf Anfang</button>
       </form>

@@ -6,6 +6,7 @@ import StartButtonPage from "./components/StartButtonPage.js";
 import Test from "./components/Test.js";
 import SearchPage from "./components/SearchPage.js";
 import Verbindungsanzeige from "./components/ConnectionDisplay.js";
+import End from "./components/End";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
     <>
       {/* <Test/> */}
       <StartButtonPage />
+      {/* <End/> */}
       {/* <Startseite /> */}
       {/* <Verbindung />; */}
     </>
