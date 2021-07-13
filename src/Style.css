@@ -72,10 +72,14 @@ p {
   align-items: center;
 }
 
-#containerStartButtonPage button {
+#containerStartButtonPage .buttonStartButton {
   height: 100px;
   width: 200px;
-  margin-top: 100px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  /* margin-top: 100px; */
 }
 
 /* Start Page */
@@ -92,6 +96,8 @@ p {
 #welcomeTextButton {
   float: right;
   margin-right: 4rem;
+  min-width: 200px;
+  min-height: 50px;
 }
 
 #welcomeText p:first-child {
@@ -169,7 +175,7 @@ p {
   min-height: 50px;
 }
 .buttons-search-page .button-search:last-child {
-  margin-right: 50px;
+  margin-left: 50px;
 }
 .button-swap {
   border: none;
@@ -213,6 +219,7 @@ p {
     padding: 0;
     margin: 0;
   }
+
   /* StartPage */
 
   /* .StartPage-header h1 {
@@ -310,6 +317,14 @@ p {
     padding: auto;
     text-align: center;
   }
+  .buttons-search-page .button-search:last-child {
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+  .buttons-search-page {
+    text-align: center;
+  }
+
   .container-searchpage input:nth-child(4) {
     margin-top: 30px;
   }
@@ -323,8 +338,8 @@ p {
   .button-swap {
     border: none;
     background: var(--background-color);
-    height: 1.7rem;
-    width: 1.7rem;
+    max-height: 2.7rem;
+    max-width: 2.7rem;
     border-radius: 0;
     margin: 15px auto;
     padding: auto;
