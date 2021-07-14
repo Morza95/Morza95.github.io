@@ -1,9 +1,8 @@
-import React, { useState,} from "react";
+import React, { useState } from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
 import End from "./End.js";
-
 
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
@@ -19,7 +18,6 @@ const ConnectionDisplay = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
   const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
- 
 
   const backClickHandler = () => {
     props.onGoBack();
@@ -39,18 +37,18 @@ const ConnectionDisplay = (props) => {
 
   return (
     <div>
-      {clickedEnd? (
-        <End 
-          // onGoBack={() => {
-          // setHideConnectionDisplay(false);
-          // setEndClicked(false);}
+      {clickedEnd ? (
+        <End
+        // onGoBack={() => {
+        // setHideConnectionDisplay(false);
+        // setEndClicked(false);}
         />
-       ) : (
+      ) : (
         <div className="container-verbindung">
-         {/* {endClickHandler ? null:  */}
+          {/* {endClickHandler ? null:  */}
           {hideConnectionDisplay ? null : (
             <form>
-              <h1 className="Verbindung-header">Verbindungen</h1>
+              <h1 className="Verbindung-header">Verbindung</h1>
               {/* <Bild/> 
               <img src={require('.../public/busemoji.png')} />
               */}
@@ -72,24 +70,25 @@ const ConnectionDisplay = (props) => {
                 </div>
               </div>
               <div className="buttons-verbindung">
-                  <button
-                    className="button"
-                    onClick={ backClickHandler }
-                    type="submit"
-                  > Zurück 
-                  </button>
-                  <button 
-                    className="button" 
-                    onClick={endClickHandler} 
-                    > Test Beenden? 
-                  </button>
+                <button
+                  className="button"
+                  onClick={backClickHandler}
+                  type="submit"
+                >
+                  {" "}
+                  Zurück
+                </button>
+                <button className="button" onClick={endClickHandler}>
+                  {" "}
+                  Test Beenden?
+                </button>
               </div>
-               <h1 className="logo">Nav2Gö</h1>
             </form>
           )}
         </div>
-       )};
-      </div>
+      )}
+      ;
+    </div>
   );
 };
 
