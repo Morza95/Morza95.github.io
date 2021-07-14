@@ -84,12 +84,14 @@ p {
 
 /* Start Page */
 #welcomeText,
-#endText {
+#endText,
+#UseCaseDescribtion {
   margin: 1rem 2rem;
   padding: 2rem 2rem;
 }
 #welcomeText p,
-#endText p {
+#endText p,
+#UseCaseDescribtion {
   background: #333;
   color: #fff;
 
