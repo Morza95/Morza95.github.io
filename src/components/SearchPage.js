@@ -94,7 +94,7 @@ const SearchPage = (props) => {
       )}
       {hideSearchFields ? null : (
         <div>
-          <h1> Verbindungs-Suche </h1>
+          <h1> Verbindungssuche </h1>
           <div className="container-searchpage">
             <input
               list="haltestellen"
@@ -129,7 +129,7 @@ const SearchPage = (props) => {
           </div>
         </div>
       )}
-      <div className="buttons-search-page">
+      <div>
         {searchClicked ? (
           <ConnectionDisplay
             onGoBack={() => {
@@ -142,7 +142,7 @@ const SearchPage = (props) => {
             departureTime={departureTime}
           />
         ) : (
-          <div>
+          <div className="buttons-search-page">
             <button
               className="button-search"
               onClick={() => {

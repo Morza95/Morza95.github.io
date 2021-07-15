@@ -1,13 +1,13 @@
 :root {
   --primary-color: #d47107;
   --secondary-color: blue;
-  --background-color: rgb(77, 76, 76);
+  /* --background-color: rgb(77, 76, 76); */
 }
 
 /* Utilities */
 * {
   box-sizing: border-box;
-  background: var(--background-color);
+  /* background: var(--background-color); */
   padding: 0;
   margin: 0;
 }
@@ -67,7 +67,7 @@ p {
 /* Start-Button Page */
 
 #containerStartButtonPage {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -75,21 +75,20 @@ p {
 #containerStartButtonPage .buttonStartButton {
   height: 100px;
   width: 200px;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  /* margin-top: 100px; */
+  float: right;
+  margin-right: 3rem;
 }
 
 /* Start Page */
 #welcomeText,
-#endText {
+#endText,
+#UseCaseDescribtion {
   margin: 1rem 2rem;
   padding: 2rem 2rem;
 }
 #welcomeText p,
-#endText p {
+#endText p,
+#UseCaseDescribtion {
   background: #333;
   color: #fff;
 
@@ -109,11 +108,11 @@ p {
   padding-bottom: 1rem;
 }
 
-/* Verbindung-Seite */
+/* Connection Display */
 
 .container-verbindung .button {
-  width: 10rem;
-  height: 3rem;
+  width: 200px;
+  height: 50px;
   margin: 1rem;
 }
 .container-verbindung .buttons-verbindung,
@@ -124,6 +123,11 @@ p {
   align-items: flex-end;
   padding: 1rem;
   margin: 1rem;
+  border: 3px #333 solid;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem 2rem 2rem 2rem;
+  background: rgb(95, 94, 94);
 }
 
 /* ConnectionDisplay */
@@ -132,10 +136,15 @@ p {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
+  border: 3px #333 solid;
+  border-radius: 5px;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 2rem 2rem 2rem;
+  background: rgb(95, 94, 94);
 }
-.container-ConnectionDisplay .verbindung-textfeld {
+.container-ConnectionDisplay .verbindung-textfeld,
+#containerCheapestConnection .verbindung-textfeld,
+#containerFastestConnection .verbindung-textfeld {
   background: #fff;
   font-weight: bold;
   text-align: center;
@@ -154,8 +163,13 @@ p {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
+  /* padding: 1rem;
+  margin: 1rem; */
+  border: 3px #333 solid;
+  border-radius: 5px;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 2rem 0 2rem;
+  background: rgb(95, 94, 94);
 }
 .container-searchpage input {
   background: #fff;
@@ -168,20 +182,18 @@ p {
   /* width: 150px; */
   margin-top: 3rem;
 }
-.buttons-search-page {
-  display: flex;
-  flex-direction: row-reverse;
-}
 .buttons-search-page .button-search {
-  min-width: 200px;
-  min-height: 50px;
+  width: 200px;
+  height: 50px;
+  margin: 2rem;
+  margin-right: 2rem;
 }
 .buttons-search-page .button-search:last-child {
   margin-left: 50px;
 }
 .button-swap {
   border: none;
-  background: var(--background-color);
+  background-color: rgb(95, 94, 94);
   max-height: 2.7em;
   max-width: 2.7em;
   border-radius: 0;
@@ -201,8 +213,47 @@ p {
 /* .container-searchpage button {
   background: #fff;
 } */
-/* Starseite */
+/* Verbindungsauswahl */
 
+.connectionChoice {
+  border: 3px #333 solid;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem 2rem 0 2rem;
+  background: rgb(95, 94, 94);
+}
+.connectionChoice h2 {
+  background: rgb(95, 94, 94);
+}
+
+#containerCheapestConnection,
+#containerFastestConnection {
+  display: flex;
+  background: rgb(95, 94, 94);
+  align-items: center;
+  justify-content: center;
+}
+
+#containerCheapestConnection .verbindung-textfeld,
+#containerFastestConnection .verbindung-textfeld,
+#containerCheapestConnection button,
+#containerFastestConnection button {
+  width: 200px;
+  height: 70px;
+  margin: 1rem;
+  margin-top: 3rem;
+}
+
+#containerCheapestConnection *:last-child,
+#containerFastestConnection *:last-child {
+  margin-left: auto;
+}
+#backToSearchButton {
+  min-width: 200px;
+  min-height: 50px;
+  float: inline-end;
+  margin: 2rem;
+}
 /* Endseite */
 a {
   text-decoration: none;
@@ -217,6 +268,7 @@ a {
   text-align: center;
   vertical-align: middle;
   padding-top: 8px;
+  margin-right: 3rem;
 }
 #containerButtonEnd {
   display: flex;
@@ -227,7 +279,7 @@ a {
   margin-right: 10px;
 }
 /* Mobile */
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   h1 {
     max-width: auto;
     height: 70px;
@@ -340,11 +392,17 @@ a {
     padding: auto;
     text-align: center;
   }
+
   .buttons-search-page .button-search:last-child {
     margin-left: 0;
     margin-top: 2rem;
   }
   .buttons-search-page {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .buttons-search-page button {
     text-align: center;
   }
 
@@ -368,5 +426,52 @@ a {
     padding: auto;
     transform: rotate(90deg);
     margin-bottom: 50px;
+  }
+  /* Verbindungsauswahl */
+
+  .connectionChoice h2 {
+    text-align: center;
+  }
+  #containerCheapestConnection,
+  #containerFastestConnection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #containerCheapestConnection .verbindung-textfeld,
+  #containerFastestConnection .verbindung-textfeld,
+  #containerCheapestConnection button,
+  #containerFastestConnection button {
+    margin: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  #containerCheapestConnection *:last-child,
+  #containerFastestConnection *:last-child {
+    margin-left: 1rem;
+  }
+  /* Endseite */
+  a {
+    text-decoration: none;
+    background: red;
+    color: #fff;
+    /* align-items: center; */
+    border: 3px #333 solid;
+    border-radius: 12px;
+    font-weight: bold;
+    min-width: 200px;
+    min-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 8px;
+  }
+  #containerButtonEnd {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  #containerButtonEnd button {
+    min-width: 200px;
+    margin-right: 10px;
   }
 }
