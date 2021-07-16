@@ -15,7 +15,8 @@ const App = () => {
     // diese <> </> Umschließung funktioniert in diesem Projekt als Ersatz für einen Wrapper oder <React.Fragment/>
     <>
       {/* <Test/> */}
-      <StartButtonPage />
+      <Verbindungsauswahl />
+      
       {/* <Startseite /> */}
       {/* <Verbindung />; */}
     </>

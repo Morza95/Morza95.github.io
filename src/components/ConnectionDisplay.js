@@ -69,6 +69,23 @@ const ConnectionDisplay = (props) => {
                   <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
                 </div>
               </div>
+              <div className="container-ConnectionDisplay">
+                <div className="verbindung-textfeld">
+                  {" "}
+                  <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">Linie: 50</div>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">
+                  <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
+                </div>
+                <br></br>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
+                </div>
+              </div>
               <div className="buttons-verbindung">
                 <button
                   className="button"
