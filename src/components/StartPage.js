@@ -5,7 +5,7 @@ import SearchPage from "./SearchPage";
 
 const StartPage = (props) => {
   // ClickHandler
-  const [hideStartForm, setStartForm] = useState(false);
+  const [hideStartForm, setStartFormHidden] = useState(false);
   const [callSearchPage, setCallSearchPage] = useState(false);
 
   const continueClickedHandler = () => {
@@ -40,9 +40,11 @@ const StartPage = (props) => {
               </p>
             </div>
           </header>
+          </form>
+          )}
 
           {callSearchPage ? (
-            <SearchPage onGoBack={() => setCallSearchPage(false)} />
+            <SearchPage onGoBack={() => setCallSearchPage(false)} onSetStartFormHidden ={setStartFormHidden} />
           ) : (
             <button
               id="welcomeTextButton"
@@ -57,8 +59,6 @@ const StartPage = (props) => {
               Weiter
             </button>)
           } */}
-        </form>
-      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ErrorModal from "./ErrorHandler/ErrorModal.js";
 import "../Style.css";
 import Verbindungsanzeige from "./ConnectionDisplay.js";
@@ -16,6 +16,8 @@ const SearchPage = (props) => {
   const [searchClicked, setSearchClicked] = useState(false);
   const [error, setError] = useState();
   const [hideSearchFields, setHideSearchFields] = useState(false);
+  const departureInputRef = useRef();
+  const destinationInputRef = useRef();
 
   const backClickHandler = () => {
     props.onGoBack();
@@ -65,9 +67,13 @@ const SearchPage = (props) => {
   };
 
   // In "Update" von Kai funktioniert es noch
+
+  // let departure [] = {departurevalue = departureInputRef.current.value }
+  // let destination [] = { destinationvalue = destinationInputRef}
+
   const changeStopHandler = () => {
-    let a = departureStop;
-    setDepartureStop(destinationStop);
+    let a = departureInputRef.current.value;
+    setDepartureStop(destinationInputRef.current.value);
     setDestinationStop(a);
   };
 
@@ -102,10 +108,10 @@ const SearchPage = (props) => {
               value={departureStop}
               onChange={departureChangeHandler}
               placeholder="Start"
-              //ref={departureInputRef}
+              ref={departureInputRef}
             />
             <button className="button-swap" onClick={changeStopHandler}>
-              {" "}
+              {/* {" "} */}
               <BsArrowLeftRight size="3rem" />
             </button>
             <input
@@ -114,6 +120,7 @@ const SearchPage = (props) => {
               value={destinationStop}
               onChange={destinationStopHandler}
               placeholder="Ziel"
+              ref = {destinationInputRef}
             />
             <input
               type="date"
@@ -133,6 +140,7 @@ const SearchPage = (props) => {
       <div>
         {searchClicked ? (
           <ConnectionDisplay
+          onSetStartFormHidden = {props.onSetStartFormHidden}
             onGoBack={() => {
               setHideSearchFields(false);
               setSearchClicked(false);

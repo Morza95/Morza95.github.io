@@ -14,6 +14,7 @@ function Header() {
   return <img src={logo} alt="Logo" />;
 }
  */
+
 const ConnectionDisplay = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
@@ -25,7 +26,7 @@ const ConnectionDisplay = (props) => {
   const endClickHandler = () => {
     setEndClicked(true);
   };
-
+// -------------------------------WICHTIGE FERTIGE NOTIZEN FÜRT DIE VERZÖGERUNG---------------------------------------------------------------
   // für die verzögerung: use effect importieren
   //todo: dann noch loading bar hinzufügen
   // useEffect(() => {
@@ -35,10 +36,74 @@ const ConnectionDisplay = (props) => {
   //   return () => clearTimeout(timer);
   // }, []);
 
+//   --------------------------(nicht ganz so wichtige) Ideen für Eingabezeit + paar Sekunden als Losfahrzeit anzeigen--------------------
+
+
+// zum in-string konvertieren:
+const timeToDecimal = (time) => {
+  const [hours, minutes] = time.split(":");
+  console.log(hours, minutes);
+  let r =  Number(Math.round(Math.random() * (9 - 3)) + 3 ); 
+  console.log(r);
+  let tneu=Number(minutes)+ Number(r);
+  console.log(tneu);
+  console.log(Number(hours) + Number(tneu) / 60 )
+  return(Number(hours) + Number(tneu) / 60 );
+}
+
+//   zum Zurückkonvertieren: 
+const stringToTime = (StringTime) => {
+  console.log("Eingabewert in f2: " + StringTime);
+  const hs = Math.floor(StringTime);
+  const mins = Math.round((StringTime - hs) * 60);
+  return `${hs < 10 ? "0" : ""}${hs}:${mins < 10 ? "0" : ""}${mins}`;
+}
+// let newDepartureTimePreResult = timeToDecimal(props.departureTime);
+// let newDepartureTime = stringToTime(newDepartureTimePreResult);
+let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
+
+// const timeToDecimal = (time) => {
+//   const [hours, minutes] = time.split(":");
+//   let r =  Math.round(Math.random() * (9 - 3)) + 3 ;
+//   let mneu = minutes +r; 
+//   if(mneu>60)
+//     {hours = hours + 1;
+//      mneu = mneu - 60; }
+//   return Number(hours) + Number(mneu) / 60;
+// }
+
+// //   zum Zurückkonvertieren: 
+// const stringToTime = (StringTime) => {
+//   const hs = Math.floor(StringTime);
+//   const mins = Math.round((StringTime - hs) * 60);
+//   return `${hs < 10 ? "0" : ""}${hs}:${mins < 10 ? "0" : ""}${mins}`;
+// }
+// let newDepartureTimePreResult = timeToDecimal(props.departureTime);
+// let newDepartureTime = stringToTime(newDepartureTimePreResult);
+
+// const timeToSeconds(time) {
+//     const [hours, minutes] = time.split(":");
+//     let sumOfSeconds = ((hours*60)+minutes);
+//     return (sumOfSeconds);
+// }
+
+// To sum:
+// let sumHoras = 0;
+// for (let i = 0; i < resp.data.length; i++){
+//      sumHoras += hoursStringToDecimal(resp.data[i].tempoGasto);
+// }
+
+// To sum:
+// let sumHoras = 0;
+// for (let i = 0; i < resp.data.length; i++){
+//    sumHoras += hoursStringToDecimal(resp.data[i].tempoGasto);
+// }
+
+
   return (
     <div>
       {clickedEnd ? (
-        <End
+        <End 
         // onGoBack={() => {
         // setHideConnectionDisplay(false);
         // setEndClicked(false);}
@@ -55,7 +120,7 @@ const ConnectionDisplay = (props) => {
               <div className="container-ConnectionDisplay">
                 <div className="verbindung-textfeld">
                   {" "}
-                  <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
+                  <p>Abfahrt:</p> {props.departureDay} {newDepartureTime}{" "}
                 </div>
                 <div className="verbindung-textfeld">Linie: 50</div>
                 <div className="verbindung-textfeld">
@@ -78,7 +143,7 @@ const ConnectionDisplay = (props) => {
                   {" "}
                   Zurück
                 </button>
-                <button className="button" onClick={endClickHandler}>
+                <button className="button" onClick={() => {endClickHandler(); props.onSetStartFormHidden(true); } }>
                   {" "}
                   Test Beenden?
                 </button>

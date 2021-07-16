@@ -2,11 +2,11 @@ import React from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
 
-const End = () => {
+const End = (props) => {
   // Button Click Handler einfügen
 
   return (
-    <div>
+    <div> 
       <form>
         <header className="Startseite-header">
           <h1 className="logo">Nav2Gö</h1>
