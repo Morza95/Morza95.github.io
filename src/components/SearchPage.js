@@ -132,7 +132,7 @@ const SearchPage = (props) => {
               type="time"
               value={departureTime}
               onChange={departureTimeHandler}
-              //ref={destinationInputRef}
+              
             />
           </div>
         </div>
