@@ -131,6 +131,7 @@ p {
 }
 
 /* ConnectionDisplay */
+.h2ConnectionDisplay {
   margin: 0 2rem;
   align-items: center;
   border-bottom: 3px grey solid;
