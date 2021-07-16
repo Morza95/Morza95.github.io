@@ -7,7 +7,7 @@ import Test from "./components/Test.js";
 import SearchPage from "./components/SearchPage.js";
 import Verbindungsanzeige from "./components/ConnectionDisplay.js";
 import End from "./components/End";
-import Verbindungsauswahl from "./components/Verbindungsauswahl.js";
+//import  from "./components/Verbindungsauswahl.js";
 import ConnectionDisplay from "./components/ConnectionDisplay.js";
 
 const App = () => {

@@ -15,7 +15,7 @@ function Header() {
 }
  */
 
-const ConnectionDisplay = (props) => {
+const ConnectionDisplay2 = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
   const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
@@ -119,4 +119,4 @@ let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
   );
 };
 
-export default ConnectionDisplay;
+export default ConnectionDisplay2;

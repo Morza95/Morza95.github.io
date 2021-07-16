@@ -5,6 +5,7 @@ import Verbindungsanzeige from "./ConnectionDisplay.js";
 import StartPage from "./StartPage.js";
 import { BsArrowLeftRight } from "react-icons/bs";
 import ConnectionDisplay from "./ConnectionDisplay.js";
+import ConnectionSelect from "./ConnectionSelect.js";
 
 const SearchPage = (props) => {
   // useState
@@ -139,7 +140,7 @@ const SearchPage = (props) => {
       )}
       <div>
         {searchClicked ? (
-          <ConnectionDisplay
+          <ConnectionSelect
           onSetStartFormHidden = {props.onSetStartFormHidden}
             onGoBack={() => {
               setHideSearchFields(false);
