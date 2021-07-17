@@ -61,8 +61,9 @@ const stringToTime = (StringTime) => {
 
 let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
 
-
   return (
+    <div>
+    { props.upperConnectionStarted ? (
     <div>
       {clickedEnd ? (
         <End 
@@ -115,6 +116,62 @@ let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
         </div>
       )}
       ;
+    </div>) :
+    (
+      <div>
+      {clickedEnd ? (
+        <End 
+        // onGoBack={() => {
+        // setHideConnectionDisplay(false);
+        // setEndClicked(false);}
+        />
+      ) : (
+        <div className="container-verbindung">
+          {/* {endClickHandler ? null:  */}
+          {hideConnectionDisplay ? null : (
+            <form>
+              <h1 className="Verbindung-header">Verbindung</h1>
+              {/* <Bild/> 
+              <img src={require('.../public/busemoji.png')} />
+              */}
+              <div className="container-ConnectionDisplay">
+                <div className="verbindung-textfeld">
+                  {" "}
+                  <p>Abfahrt:</p> {props.departureDay} {newDepartureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">Linie: 50</div>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">
+                  <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
+                </div>
+                <br></br>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
+                </div>
+              </div>
+              <div className="buttons-verbindung">
+                <button
+                  className="button"
+                  onClick={backClickHandler}
+                  type="submit"
+                >
+                  {" "}
+                  Zurück
+                </button>
+                <button className="button" onClick={() => {endClickHandler(); props.onSetStartFormHidden(true); } }>
+                  {" "}
+                  Test Beenden?
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      )}
+    </div>)
+    } 
+    )
     </div>
   );
 };
