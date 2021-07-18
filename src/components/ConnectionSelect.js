@@ -1,165 +1,107 @@
 import { useState } from "react";
 import ConnectionDisplay from "./ConnectionDisplay";
-import SearchPage from "./SearchPage";
+import ConnectionDisplay2 from "./ConnectionDisplay2";
+import { FaBus } from "react-icons/fa";
+import { BsArrowRight } from "react-icons/bs";
+import { GiKickScooter } from "react-icons/gi";
 
 const ConnectionSelect = (props) => {
-  const [upperConnectionStarted , setUpperConnectionStarted] = useState(false);
+  const [upperConnectionStarted, setUpperConnectionStarted] = useState(false);
   const [lowerConnectionStarted, setLowerConnectionStarted] = useState(false);
-  const [backToSearchPageClicked , setBackToSearchPageClicked] = useState(false);
+  const [backToSearchPageClicked, setBackToSearchPageClicked] = useState(false);
   const [hideConnectionSelect, setHideConnectionSelect] = useState(false);
-  const [upperButtonFirstPressed, setUpperButtonFirstPressed] = useState(false);
-  const [lowerButtonFirstPressed, setLowerButtonFirstPressed] = useState(false);
-
-  const backClickHandler = () => {
-    props.onGoBack();
-  };
-
-  let FahrtkostenGuenstig = 5;
-
-  // let durationHour = 0.5;
-  // let durationMin = 10;
-  // let durationCheapHour = 0;
-  // let durationCheapMin = 15;
-  // Dauer Schnell
-
-// zwei Zufällige Fahrtdauern bestehend aus h und min ausgeben, wobei die erste die Kürzere ist
-const durations = () => {
-    let slowH, slowMin, fastH, fastMin = 0;
-    let t1 = Math.floor(Math.random() * (105 - 25 + 1)) + 25;
-    let t2=  Math.floor(Math.random() * (105 - 25+ 1)) + 25;
-    if(t2>=t1){
-      if(t1>=60){fastH=1; fastMin = t1-60;}else{fastH=0; fastMin = t1;}
-      if(t2>=60){slowH=1; slowMin = t2-60;}else{slowH=0; slowMin = t2;}
-    }
-    if(t1>t2){
-      if(t2>=60){fastH=1; fastMin = t2-60;}else{fastH=0; fastMin = t2;}
-      if(t1>=60){slowH=1; slowMin = t1-60;}else{slowH=0; slowMin = t1;}
-    }
-    return {slowH, slowMin, fastH, fastMin};
-  }
-
-  const values = durations();
-
-  const slowH = values.slowH;
-  let slowMin = values.slowMin;
-  let fastH = values.fastH;
-  let fastMin = values.fastMin;
-
-  // const timeMinRandomizer = (Min) => {
-  //   Min = Math.round((Min+(Math.random()*60)));
-  //   durationMin = Min;
-  //   return durationMin
-  // }
-
-  // // Dauer Günstig
-  // const timeHourCheapRandomizer = () => {
-  //   durationCheapHour = Math.round((durationHour + (Math.random()*1)));
-  //   console.log(durationCheapHour)
-  //   return Math.round((durationCheapHour))
-  // }
-
-  // const timeMinCheapRandomizer = () => {
-  //   let durationCheapMin = Math.round((durationMin+(Math.random()*10)));
-  //   return durationCheapMin
-  // }
-
-  const Fahrtkostenrechner = (Fahrtkosten) => {
-    Fahrtkosten = (Fahrtkosten+(Math.random()*10));
-    FahrtkostenGuenstig = Fahrtkosten;
-    return (Math.round(FahrtkostenGuenstig));
-  }
 
   return (
-    <div> 
-      <form>
-        {hideConnectionSelect? null : ( 
-          <div>
-            <h1 className="logo">Nav2Gö</h1>
-            <h1>Verbindungsauswahl</h1>
-            <div className="connectionChoice">
-            {/* {timeMinRandomizer(durationMin)};
-                {timeHourRandomizer(durationHour)}
-                {timeMinCheapRandomizer(durationCheapMin)};
-                {timeHourCheapRandomizer(durationHour)}; */}
-              <h2>Günstigste Verbindung</h2>
-              <div id="containerCheapestConnection">
-                <div className="verbindung-textfeld">
-                    Fahrtkosten: {(props.departureStop=="" && props.destinationStop=="")? 0 : (Fahrtkostenrechner(FahrtkostenGuenstig))} .00 € </div>
-                <div className="verbindung-textfeld">Dauer: {slowH} h {slowMin} min</div>
-                <div className="verbindung-textfeld">Umstiege 1</div>
+    <div>
+      {hideConnectionSelect ? null : (
+        <form>
+          <h1 className="logo">Nav2Gö</h1>
+          <h1>Verbindungsauswahl</h1>
+
+          <div className="connectionChoice">
+            <h2>Günstigste Verbindung</h2>
+            <div id="containerCheapestConnection">
+              <div className="verbindung-textfeld"> Fahrtkosten: 8,50 € </div>
+              <div className="verbindung-textfeld">Dauer: 1h 20 min</div>
+              <div className="verbindung-textfeld">Umstiege 2</div>
+              <div className="umstiegIcons">
+                <FaBus size="3rem" color="white" />
+                <BsArrowRight size="3rem" color="white" />
+                <GiKickScooter size="3rem" color="white" />
+                <BsArrowRight size="3rem" color="white" />
+                <FaBus size="3rem" color="white" />
               </div>
-            </div>
-          </div>)
-        }
-      {upperConnectionStarted  ? (
-        // lowerConnectionStarted? null : (
-            <ConnectionDisplay
-            onSetStartFormHidden = {props.onSetStartFormHidden}
-            departureStop={props.departureStop}
-            destinationStop={props.destinationStop}
-            departureDay={props.departureDay}
-            departureTime={props.departureTime}
-            upperConnectionStarted={upperConnectionStarted}
-            lowerConnectionStarted={lowerConnectionStarted}
-            onGoBack = {backClickHandler}
-            /> 
-            ) : ( lowerButtonFirstPressed? null : (
-              <div className="connectionChoice">
-                <button onClick={() => {
-                  setUpperConnectionStarted(true); 
-                  setUpperButtonFirstPressed(true);
-                  setHideConnectionSelect(true); }}>
-                  {" "}
-                  Route starten{" "}
-                </button> 
-              </div>) )
-        }
-      </form>
-    {hideConnectionSelect? null : (
-      <div className="connectionChoice">
-          <h2>Schnellste Verbindung</h2>
-          <div id="containerFastestConnection">
-            <div className="verbindung-textfeld">
-              Fahrtkosten: {(props.departureStop=="" && props.destinationStop=="")? 0 : (Fahrtkostenrechner(FahrtkostenGuenstig))} .00 € </div>
-               {/* Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)}.00 €</div> */}
-            <div className="verbindung-textfeld">Dauer: {fastH} h {fastMin} min </div>
-            <div className="verbindung-textfeld">Umstiege 1</div>
-          </div>
-        </div> )
-    }
-      {lowerConnectionStarted  ? (
-        <ConnectionDisplay
-            onSetStartFormHidden = {props.onSetStartFormHidden}
-            departureStop={props.departureStop}
-            destinationStop={props.destinationStop}
-            departureDay={props.departureDay}
-            departureTime={props.departureTime}
-            upperConnectionStarted={upperConnectionStarted}
-            lowerConnectionStarted={lowerConnectionStarted}
-            onGoBack = {backClickHandler}
-            />
-            ) : ( upperButtonFirstPressed? null : (
-            <div className="connectionChoice">
-              <div id="containerFastestConnection">
-                <button onClick={() => { 
-                    setLowerConnectionStarted(true);  
-                    setLowerButtonFirstPressed(true);
-                    setHideConnectionSelect(true); }} >
+              {upperConnectionStarted ? (
+                <ConnectionDisplay
+                  departureStop={props.departureStop}
+                  destinationStop={props.destinationStop}
+                  departureDay={props.departureDay}
+                  departureTime={props.departureTime}
+                />
+              ) : (
+                <button
+                  onClick={() => {
+                    setUpperConnectionStarted(true);
+                    setHideConnectionSelect(true);
+                  }}
+                >
                   {" "}
                   Route starten{" "}
                 </button>
+              )}
+            </div>
+          </div>
+          <div className="connectionChoice">
+            <h2>Schnellste Verbindung</h2>
+            <div id="containerFastestConnection">
+              <div className="verbindung-textfeld"> Fahrtkosten: 12,80 € </div>
+              <div className="verbindung-textfeld">Dauer. 30 min </div>
+              <div className="verbindung-textfeld">Umstiege 1</div>
+              <div className="umstiegIcons">
+                <FaBus size="3rem" color="white" />
+                <BsArrowRight size="3rem" color="white" />
+                <FaBus size="3rem" color="white" />
               </div>
-            </div>))
-        }
-        {hideConnectionSelect? null : (
-          backToSearchPageClicked ? ( <SearchPage/> ) : (
-            <button 
-              onClick={() => {setBackToSearchPageClicked(true);  setHideConnectionSelect(true); props.onGoBack(); } }
+
+              {lowerConnectionStarted ? (
+                <ConnectionDisplay2
+                  departureStop={props.departureStop}
+                  destinationStop={props.destinationStop}
+                  departureDay={props.departureDay}
+                  departureTime={props.departureTime}
+                />
+              ) : (
+                <button
+                  onClick={() => {
+                    setLowerConnectionStarted(true);
+                    setHideConnectionSelect(true);
+                  }}
+                >
+                  {" "}
+                  Route starten{" "}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {backToSearchPageClicked ? (
+            <ConnectionDisplay />
+          ) : (
+            <button
+              className="backButton"
+              onClick={() => {
+                setBackToSearchPageClicked(true);
+                setHideConnectionSelect(true);
+                props.onGoBack();
+              }}
             >
               {" "}
               Zurück zur Suche{" "}
             </button>
-        ))}
+          )}
+        </form>
+      )}
+      ;
     </div>
   );
 };
