@@ -3,8 +3,6 @@ import "../Style.css";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
 import End from "./End.js";
-import { FaBus } from "react-icons/fa";
-import { GiKickScooter } from "react-icons/gi";
 
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
@@ -28,7 +26,7 @@ const ConnectionDisplay = (props) => {
   const endClickHandler = () => {
     setEndClicked(true);
   };
-  // -------------------------------WICHTIGE FERTIGE NOTIZEN FÜRT DIE VERZÖGERUNG---------------------------------------------------------------
+// -------------------------------WICHTIGE FERTIGE NOTIZEN FÜRT DIE VERZÖGERUNG---------------------------------------------------------------
   // für die verzögerung: use effect importieren
   //todo: dann noch loading bar hinzufügen
   // useEffect(() => {
@@ -38,34 +36,37 @@ const ConnectionDisplay = (props) => {
   //   return () => clearTimeout(timer);
   // }, []);
 
-  //   --------------------------(nicht ganz so wichtige) Ideen für Eingabezeit + paar Sekunden als Losfahrzeit anzeigen--------------------
+//   --------------------------(nicht ganz so wichtige) Ideen für Eingabezeit + paar Sekunden als Losfahrzeit anzeigen--------------------
 
-  // zum in-string konvertieren:
-  const timeToDecimal = (time) => {
-    const [hours, minutes] = time.split(":");
-    console.log(hours, minutes);
-    let r = Number(Math.round(Math.random() * (9 - 3)) + 3);
-    console.log(r);
-    let tneu = Number(minutes) + Number(r);
-    console.log(tneu);
-    console.log(Number(hours) + Number(tneu) / 60);
-    return Number(hours) + Number(tneu) / 60;
-  };
 
-  //   zum Zurückkonvertieren:
-  const stringToTime = (StringTime) => {
-    console.log("Eingabewert in f2: " + StringTime);
-    const hs = Math.floor(StringTime);
-    const mins = Math.round((StringTime - hs) * 60);
-    return `${hs < 10 ? "0" : ""}${hs}:${mins < 10 ? "0" : ""}${mins}`;
-  };
+// zum in-string konvertieren:
+const timeToDecimal = (time) => {
+  const [hours, minutes] = time.split(":");
+  console.log(hours, minutes);
+  let r =  Number(Math.round(Math.random() * (9 - 3)) + 3 ); 
+  console.log(r);
+  let tneu=Number(minutes)+ Number(r);
+  console.log(tneu);
+  console.log(Number(hours) + Number(tneu) / 60 )
+  return(Number(hours) + Number(tneu) / 60 );
+}
 
-  let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
+//   zum Zurückkonvertieren: 
+const stringToTime = (StringTime) => {
+  console.log("Eingabewert in f2: " + StringTime);
+  const hs = Math.floor(StringTime);
+  const mins = Math.round((StringTime - hs) * 60);
+  return `${hs < 10 ? "0" : ""}${hs}:${mins < 10 ? "0" : ""}${mins}`;
+}
+
+let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
 
   return (
     <div>
+    { props.upperConnectionStarted ? (
+    <div>
       {clickedEnd ? (
-        <End
+        <End 
         // onGoBack={() => {
         // setHideConnectionDisplay(false);
         // setEndClicked(false);}
@@ -80,65 +81,20 @@ const ConnectionDisplay = (props) => {
               <img src={require('.../public/busemoji.png')} />
               */}
               <div className="container-ConnectionDisplay">
-                <h2 className="h2ConnectionDisplay">Schritt 1</h2>
-                <div className="container-ConnectionDisplay">
-                  <div className="verbindung-textfeld">
-                    {" "}
-                    <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">Linie: 50</div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
-                  </div>
-                  <div className="busIcon">
-                    <FaBus size="3rem" color="white" />
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
-                  </div>
+                <div className="verbindung-textfeld">
+                  {" "}
+                  <p>Abfahrt:</p> {props.departureDay} {newDepartureTime}{" "}
                 </div>
-                <h2 className="h2ConnectionDisplay">Schritt 2</h2>
-                <div className="container-ConnectionDisplay">
-                  <div className="verbindung-textfeld">
-                    {" "}
-                    <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">Linie: 50</div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
-                  </div>
-                  <div className="busIcon">
-                    <GiKickScooter size="3rem" color="white" />
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
-                  </div>
+                <div className="verbindung-textfeld">Linie: 50</div>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
                 </div>
-                <h2 className="h2ConnectionDisplay">Schritt 2</h2>
-                <div className="container-ConnectionDisplay">
-                  <div className="verbindung-textfeld">
-                    {" "}
-                    <p>Abfahrt:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">Linie: 50</div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
-                  </div>
-                  <div className="busIcon">
-                    <FaBus size="3rem" color="white" />
-                  </div>
-                  <div className="verbindung-textfeld">
-                    <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
-                  </div>
+                <div className="verbindung-textfeld">
+                  <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
+                </div>
+                <br></br>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
                 </div>
               </div>
               <div className="buttons-verbindung">
@@ -150,13 +106,7 @@ const ConnectionDisplay = (props) => {
                   {" "}
                   Zurück
                 </button>
-                <button
-                  className="button"
-                  onClick={() => {
-                    endClickHandler();
-                    props.onSetStartFormHidden(true);
-                  }}
-                >
+                <button className="button" onClick={() => {endClickHandler(); props.onSetStartFormHidden(true); } }>
                   {" "}
                   Test Beenden?
                 </button>
@@ -166,6 +116,62 @@ const ConnectionDisplay = (props) => {
         </div>
       )}
       ;
+    </div>) :
+    (
+      <div>
+      {clickedEnd ? (
+        <End 
+        // onGoBack={() => {
+        // setHideConnectionDisplay(false);
+        // setEndClicked(false);}
+        />
+      ) : (
+        <div className="container-verbindung">
+          {/* {endClickHandler ? null:  */}
+          {hideConnectionDisplay ? null : (
+            <form>
+              <h1 className="Verbindung-header">Verbindung</h1>
+              {/* <Bild/> 
+              <img src={require('.../public/busemoji.png')} />
+              */}
+              <div className="container-ConnectionDisplay">
+                <div className="verbindung-textfeld">
+                  {" "}
+                  <p>Abfahrt:</p> {props.departureDay} {newDepartureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">Linie: 50</div>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft:</p> {props.departureDay} {props.departureTime}{" "}
+                </div>
+                <div className="verbindung-textfeld">
+                  <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
+                </div>
+                <br></br>
+                <div className="verbindung-textfeld">
+                  <p>Ankunft an Haltestelle:</p> {props.destinationStop}{" "}
+                </div>
+              </div>
+              <div className="buttons-verbindung">
+                <button
+                  className="button"
+                  onClick={backClickHandler}
+                  type="submit"
+                >
+                  {" "}
+                  Zurück
+                </button>
+                <button className="button" onClick={() => {endClickHandler(); props.onSetStartFormHidden(true); } }>
+                  {" "}
+                  Test Beenden?
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      )}
+    </div>)
+    } 
+    )
     </div>
   );
 };

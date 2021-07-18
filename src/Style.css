@@ -131,11 +131,6 @@ p {
 }
 
 /* ConnectionDisplay */
-.h2ConnectionDisplay {
-  margin: 0 2rem;
-  align-items: center;
-  border-bottom: 3px grey solid;
-}
 .container-ConnectionDisplay {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -160,9 +155,6 @@ p {
   /* width: 150px; */
   margin-top: 3rem;
   min-height: 75px;
-}
-.busIcon {
-  text-align: center;
 }
 /* Search-Page */
 
@@ -261,10 +253,6 @@ p {
   min-height: 50px;
   float: inline-end;
   margin: 2rem;
-}
-.umstiegIcons {
-  margin-top: 2rem;
-  min-width: 150px;
 }
 /* Endseite */
 a {
