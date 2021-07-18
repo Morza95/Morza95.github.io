@@ -1,15 +1,7 @@
 {
   "short_name": "Nav2Goe",
   "name": "Nav2Goe_Sample",
-  "icons": [
 
-
-    {
-      "src": "busemoji.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
