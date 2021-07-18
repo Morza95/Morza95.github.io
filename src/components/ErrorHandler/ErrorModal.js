@@ -1,21 +1,22 @@
 import React from "react";
 // import Card from './Card';
+import "../../Style.css";
 // import Button from './Button';
-//import classes from './ErrorModal.module.css';
+import classes from './ErrorModal.module.css';
 
 const ErrorModal = (props) => {
   return (
-      <div>
-          <div  onClick={props.onConfirm} />  
+      <div className="connectionChoice">
+          {/* <div className={classes.backdrop} onClick={props.onConfirm} />   Hier müsste noch eine Card oder Form drüber gelegegt werden*/}
           {/* backdrop meint auf den Hintergrund klicken */}
-    <div >
-      <header >
+    <div className="containerCheapestConnection">
+      <header className={classes.header}>
       <h2>{props.title}</h2>
       </header>
-      <div >
+      <div className={classes.content}>
           <p>{props.message}</p>
       </div>
-      <footer >
+      <footer className={classes.actions}>
         <button onClick={props.onConfirm}>Okay</button>
       </footer>
     </div>

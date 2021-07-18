@@ -20,6 +20,8 @@ const SearchPage = (props) => {
   const departureInputRef = useRef();
   const destinationInputRef = useRef();
 
+  let errorOccured = false;
+
   const backClickHandler = () => {
     props.onGoBack();
   };
@@ -34,37 +36,41 @@ const SearchPage = (props) => {
   const errorPrevent = () => {
     if (
       departureStop.trim().length === 0 ||
-      //departureStop != "Gartenstraße" ||
-      //departureTime.trim().length === 0 ||
       destinationStop.trim().length === 0
     ) {
-      return (
-        setError({
-          title: "Falsche Daten",
-          message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
-        }) && Error === true
-      );
+      setError({
+        title: "Falsche Daten",
+        message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
+      });
+      return (errorOccured = true);
     }
-    return Error === false;
+    if (departureTime === "" || departureDay === "") {
+      setError({
+        title: "Falsche Daten",
+        message: "Bitte geben Sie einen Abfahrtstag und eine Abfahrtszeit an!",
+      });
+      return (errorOccured = true);
+    }
   };
 
   ////////// ErrorHandler /////////
 
   const errorHandler = () => {
-    setError(null);
+    setError(false);
   };
+
+  // errorPrevent();
+  // console.log(Error);
+  // //{Error? setSearchClicked(false) : setSearchClicked(true)}
+  // if (Error) {
+  //   return setSearchClicked(true) && console.log("weiter gehts");
+  // }
+  // return setSearchClicked(false) && console.log("Fehler Aufgetreten");
 
   ////// Handler ///////
 
   const searchClickedHandler = () => {
     setSearchClicked(true);
-    // errorPrevent();
-    // console.log(Error);
-    // //{Error? setSearchClicked(false) : setSearchClicked(true)}
-    // if (Error) {
-    //   return setSearchClicked(true) && console.log("weiter gehts");
-    // }
-    // return setSearchClicked(false) && console.log("Fehler Aufgetreten");
   };
 
   // In "Update" von Kai funktioniert es noch
@@ -121,7 +127,7 @@ const SearchPage = (props) => {
               value={destinationStop}
               onChange={destinationStopHandler}
               placeholder="Ziel"
-              ref = {destinationInputRef}
+              ref={destinationInputRef}
             />
             <input
               type="date"
@@ -133,7 +139,6 @@ const SearchPage = (props) => {
               type="time"
               value={departureTime}
               onChange={departureTimeHandler}
-              
             />
           </div>
         </div>
@@ -141,7 +146,7 @@ const SearchPage = (props) => {
       <div>
         {searchClicked ? (
           <ConnectionSelect
-          onSetStartFormHidden = {props.onSetStartFormHidden}
+            onSetStartFormHidden={props.onSetStartFormHidden}
             onGoBack={() => {
               setHideSearchFields(false);
               setSearchClicked(false);
@@ -156,8 +161,15 @@ const SearchPage = (props) => {
             <button
               className="button-search"
               onClick={() => {
-                searchClickedHandler();
-                setHideSearchFields(true);
+                errorPrevent();
+                {
+                  if (errorOccured) {
+                    return;
+                  } else {
+                    setHideSearchFields(true);
+                    searchClickedHandler();
+                  }
+                }
               }}
             >
               Suchen
