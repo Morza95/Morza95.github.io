@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Style.css";
 import Logo from "./Logo.js";
 import SearchPage from "./SearchPage.js";
 import End from "./End.js";
+
 
 //import 'webpack';
 /* import logo from '.../public/busemoji.png'
@@ -18,7 +19,8 @@ function Header() {
 const ConnectionDisplay = (props) => {
   // Button - useState
   const [clickedEnd, setEndClicked] = useState(false);
-  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(false);
+  const [hideConnectionDisplay, setHideConnectionDisplay] = useState(true);
+  const [loadingMessage, setloadingMessage] = useState(true);
 
   const backClickHandler = () => {
     props.onGoBack();
@@ -29,29 +31,33 @@ const ConnectionDisplay = (props) => {
 // -------------------------------WICHTIGE FERTIGE NOTIZEN FÜRT DIE VERZÖGERUNG---------------------------------------------------------------
   // für die verzögerung: use effect importieren
   //todo: dann noch loading bar hinzufügen
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //  setHideConnectionDisplay(false)
-  //   }, 7000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+   setHideConnectionDisplay(false);
+   setloadingMessage(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
+  if(loadingMessage){<p>loading...</p>};
 //   --------------------------(nicht ganz so wichtige) Ideen für Eingabezeit + paar Sekunden als Losfahrzeit anzeigen--------------------
 
 
-// zum in-string konvertieren:
-const timeToDecimal = (time) => {
+// zum zeit in-dezimal-string konvertieren: ausgabeformat für 6:30 = 6,5 
+const timeToDecimal= (time) => {
   const [hours, minutes] = time.split(":");
-  console.log(hours, minutes);
+  return(Number(hours) + Number(minutes) / 60 );
+}
+
+// zum in-string konvertieren, außerdem zwischen 3-9 min (zufällig) hinzufügen 
+const timeToDecimalAdd = (time) => {
+  const [hours, minutes] = time.split(":");
   let r =  Number(Math.round(Math.random() * (9 - 3)) + 3 ); 
-  console.log(r);
   let tneu=Number(minutes)+ Number(r);
-  console.log(tneu);
-  console.log(Number(hours) + Number(tneu) / 60 )
   return(Number(hours) + Number(tneu) / 60 );
 }
 
-//   zum Zurückkonvertieren: 
+//   zum String in Zeit konvertieren 
 const stringToTime = (StringTime) => {
   console.log("Eingabewert in f2: " + StringTime);
   const hs = Math.floor(StringTime);
@@ -59,11 +65,11 @@ const stringToTime = (StringTime) => {
   return `${hs < 10 ? "0" : ""}${hs}:${mins < 10 ? "0" : ""}${mins}`;
 }
 
-let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
+let newDepartureTime = stringToTime(timeToDecimalAdd(props.departureTime));
 
   return (
     <div>
-    { props.upperConnectionStarted ? (
+    { props.cheaperConnectionStarted ? (
     <div>
       {clickedEnd ? (
         <End 
@@ -71,10 +77,10 @@ let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
         // setHideConnectionDisplay(false);
         // setEndClicked(false);}
         />
-      ) : (
+      ) : ( 
         <div className="container-verbindung">
           {/* {endClickHandler ? null:  */}
-          {hideConnectionDisplay ? null : (
+          {hideConnectionDisplay ? (loadingMessage? <p>loading...</p> : null) : (
             <form>
               <h1 className="Verbindung-header">Verbindung</h1>
               {/* <Bild/> 
@@ -128,7 +134,7 @@ let newDepartureTime = stringToTime(timeToDecimal(props.departureTime));
       ) : (
         <div className="container-verbindung">
           {/* {endClickHandler ? null:  */}
-          {hideConnectionDisplay ? null : (
+          {hideConnectionDisplay ? (loadingMessage? <p>loading...</p> : null) : (
             <form>
               <h1 className="Verbindung-header">Verbindung</h1>
               {/* <Bild/> 
