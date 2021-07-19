@@ -24,4 +24,4 @@ franz.buschendorf@stud.uni-goettingen.de
 katharina.girndt@stud.uni-goetinngen.de
 kai.hoering@stud.uni-goettingen.de
 
-[https://morza95.github.io/nav2goe/App.js]
+[https://morza95.github.io/nav2goe/src/App.js]
