@@ -130,7 +130,14 @@ p {
   background: rgb(95, 94, 94);
 }
 
+.container-verbindung h2 {
+  margin: 0 2rem;
+  align-items: center;
+  border-bottom: 3px grey solid;
+}
+
 /* ConnectionDisplay */
+
 .container-ConnectionDisplay {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -142,6 +149,7 @@ p {
   margin: 1rem 2rem 2rem 2rem;
   background: rgb(95, 94, 94);
 }
+
 .container-ConnectionDisplay .verbindung-textfeld,
 #containerCheapestConnection .verbindung-textfeld,
 #containerFastestConnection .verbindung-textfeld {
@@ -156,6 +164,11 @@ p {
   margin-top: 3rem;
   min-height: 75px;
 }
+
+.busIcon {
+  text-align: center;
+}
+
 /* Search-Page */
 
 .container-searchpage {
@@ -213,8 +226,7 @@ p {
 /* .container-searchpage button {
   background: #fff;
 } */
-/* Verbindungsauswahl */
-
+/* ConnectionSelect */
 .connectionChoice {
   border: 3px #333 solid;
   border-radius: 5px;
@@ -254,6 +266,11 @@ p {
   float: inline-end;
   margin: 2rem;
 }
+.umstiegIcons {
+  margin-top: 2rem;
+  min-width: 150px;
+}
+
 /* Endseite */
 a {
   text-decoration: none;
