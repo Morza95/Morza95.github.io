@@ -3,7 +3,7 @@
   "short_name": "Nav2Goe",
   "name": "Nav2Goe_Sample",
 
-  "start_url": "./src/App.js",
+  "start_url": "./src/index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
