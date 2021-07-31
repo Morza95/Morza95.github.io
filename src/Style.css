@@ -118,7 +118,7 @@ p {
 .container-verbindung .buttons-verbindung,
 .buttons-search-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   flex: 1;
   align-items: flex-end;
   padding: 1rem;
@@ -212,6 +212,7 @@ p {
   border-radius: 0;
   padding: 0;
   margin: auto;
+  margin-top: 5rem;
   margin-bottom: 5rem;
 }
 .button-swap:hover {
@@ -234,6 +235,13 @@ p {
   margin: 1rem 2rem 0 2rem;
   background: rgb(95, 94, 94);
 }
+.connectionChoice .button-select {
+  width: 200px;
+  height: 70px;
+  margin-top: 0;
+  margin: 0;
+}
+
 .connectionChoice h2 {
   background: rgb(95, 94, 94);
 }
@@ -246,7 +254,13 @@ p {
   justify-content: center;
 }
 
-#containerCheapestConnection .verbindung-textfeld,
+#containerConnectionButton {
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+#containerConnectionButton #containerCheapestConnection .verbindung-textfeld,
 #containerFastestConnection .verbindung-textfeld,
 #containerCheapestConnection button,
 #containerFastestConnection button {
@@ -260,10 +274,10 @@ p {
 #containerFastestConnection *:last-child {
   margin-left: auto;
 }
-#backToSearchButton {
-  min-width: 200px;
-  min-height: 50px;
-  float: inline-end;
+.backToSearchButton {
+  width: 200px;
+  height: 50px;
+  float: right;
   margin: 2rem;
 }
 .umstiegIcons {
@@ -376,7 +390,7 @@ a {
   .container-verbindung .buttons-verbindung {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
   /* .container-verbindung .buttons-verbindung button {
     margin: 20px;
@@ -411,13 +425,15 @@ a {
   }
 
   .buttons-search-page .button-search:last-child {
-    margin-left: 0;
+    margin-left: 2rem;
     margin-top: 2rem;
   }
   .buttons-search-page {
-    flex-direction: row;
+    /* flex-direction: column; */
+    display: flex;
     align-items: center;
     justify-content: center;
+    margin: 1rem;
   }
   .buttons-search-page button {
     text-align: center;
@@ -468,6 +484,12 @@ a {
   #containerFastestConnection *:last-child {
     margin-left: 1rem;
   }
+  #containerConnectionButton {
+    justify-content: center;
+  }
+  .backToSearchButton {
+    float: left;
+  }
   /* Endseite */
   a {
     text-decoration: none;
@@ -477,18 +499,23 @@ a {
     border: 3px #333 solid;
     border-radius: 12px;
     font-weight: bold;
-    min-width: 200px;
-    min-height: 50px;
+    width: 200px;
+    height: 50px;
     text-align: center;
     vertical-align: middle;
     padding-top: 8px;
+    margin-right: 0;
   }
   #containerButtonEnd {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #containerButtonEnd button {
-    min-width: 200px;
-    margin-right: 10px;
+    width: 200px;
+    height: 50px;
+    margin-right: 0;
+    margin-top: 1rem;
   }
 }

@@ -6,7 +6,7 @@ const End = (props) => {
   // Button Click Handler einfügen
 
   return (
-    <div> 
+    <div>
       <form>
         <header className="Startseite-header">
           <h1 className="logo">Nav2Gö</h1>
@@ -16,7 +16,9 @@ const End = (props) => {
           </div>
         </header>
         <div id="containerButtonEnd">
-          <a href="http://google.de">Umfrage starten</a>
+          <a href="https://www.survio.com/survey/d/G9Q1M7L8V7J5L3I9V">
+            Umfrage starten
+          </a>
           <button type="submit">Zurück auf Anfang</button>
         </div>
       </form>
