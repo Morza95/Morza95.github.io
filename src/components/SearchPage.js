@@ -223,3 +223,4 @@ const SearchPage = (props) => {
 };
 
 export default SearchPage;
+
