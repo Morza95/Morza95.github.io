@@ -16,7 +16,11 @@
   },
   "scripts": {
     "predeploy": "npm run build",
+<<<<<<< Updated upstream
     "deploy": "gh-pages -b master -d src",
+=======
+    "deploy": "gh-pages -b main -d main",
+>>>>>>> Stashed changes
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
