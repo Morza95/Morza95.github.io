@@ -12,7 +12,7 @@ const End = (props) => {
           <h1 className="logo">Nav2Gö</h1>
           <div id="endText">
             <p> Danke für die Teilnahme! </p>
-            <p>Klicke jetzt bitte auf den Button, um zur zweiten App-Version zu gelangen.</p>
+            <p>Klicke jetzt bitte auf den Button, um zur Umfrage zu gelangen.</p>
           </div>
         </header>
         <div id="containerButtonEnd">
