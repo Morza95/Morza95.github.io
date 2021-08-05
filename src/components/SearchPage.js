@@ -43,14 +43,14 @@ const SearchPage = (props) => {
         title: "Falsche Daten",
         message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
       });
-      return (errorOccured = false);  // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
+      return (errorOccured = true);  // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
     }
     if (departureTime === "" || departureDay === "") {
       setError({
         title: "Falsche Daten",
         message: "Bitte geben Sie einen Abfahrtstag und eine Abfahrtszeit an!",
       });
-      return (errorOccured = false); // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
+      return (errorOccured = true); // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
     }
   };
 

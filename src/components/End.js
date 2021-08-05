@@ -16,7 +16,7 @@ const End = (props) => {
           </div>
         </header>
         <div id="containerButtonEnd">
-          <button type="submit">Zurück auf Anfang</button>
+          {/* <button type="submit">Zurück auf Anfang</button> */}
           <a id="aGreen" href="https://inkadrum.github.io//">
             2. App-Version Starten
           </a>
