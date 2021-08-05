@@ -24,3 +24,4 @@ yarn-error.log*
 node_modules/.cache/gh-pages/https!github.com!Morza95!nav2goe.git/
 node_modules
 node_modules/
+node_modules/**/*

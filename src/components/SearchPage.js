@@ -19,6 +19,7 @@ const SearchPage = (props) => {
   const [hideSearchFields, setHideSearchFields] = useState(false);
   const departureInputRef = useRef();
   const destinationInputRef = useRef();
+  const [loadingMessage, setloadingMessage] = useState(true);
 
   let errorOccured = false;
 
@@ -96,6 +97,14 @@ const SearchPage = (props) => {
     setDepartureTime(event.target.value);
   };
 
+   // ------------------------------- FÜR DIE VERZÖGERUNG---------------------------------------------------------------
+ useEffect(() => {
+  const timer = setTimeout(() => {
+ setloadingMessage(false);
+  }, 1000);
+  return () => clearTimeout(timer);
+}, []);
+
   return (
     <React.Fragment>
       {error && (
@@ -144,7 +153,7 @@ const SearchPage = (props) => {
         </div>
       )}
       <div>
-        {searchClicked ? (
+        {searchClicked ? ( (loadingMessage? <p>...loading...</p> : 
           <ConnectionSelect
             onSetStartFormHidden={props.onSetStartFormHidden}
             onGoBack={() => {
@@ -155,7 +164,7 @@ const SearchPage = (props) => {
             destinationStop={destinationStop}
             departureDay={departureDay}
             departureTime={departureTime}
-          />
+          />)
         ) : (
           <div className="buttons-search-page">
             <button

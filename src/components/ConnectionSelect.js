@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ConnectionDisplay from "./ConnectionDisplay";
 import SearchPage from "./SearchPage";
 import { FaBus } from "react-icons/fa";
@@ -36,11 +36,12 @@ const ConnectionSelect = (props) => {
   const [cheaperConnectionStarted , setCheaperConnectionStarted] = useState(false);
   const [fasterConnectionStarted, setFasterConnectionStarted] = useState(false);
   const [backToSearchPageClicked , setBackToSearchPageClicked] = useState(false);
-  const [hideConnectionSelect, setHideConnectionSelect] = useState(false);
+  const [hideConnectionSelect, setHideConnectionSelect] = useState(true);
   const [upperButtonFirstPressed, setUpperButtonFirstPressed] = useState(false);
   const [lowerButtonFirstPressed, setLowerButtonFirstPressed] = useState(false);
    const[displayedDurations, setDisplayedDurations] = useState(durations());
   const [additionalRandomMinutes, setAdditionalRandomMinutes] = useState( Number(Math.round(Math.random() * (9 - 3)) + 3 ) ); 
+  const [loadingMessage, setloadingMessage] = useState(true);
 
   const backClickHandler = () => {
     props.onGoBack();
@@ -84,14 +85,25 @@ const ConnectionSelect = (props) => {
   }
  console.log("daparture day." + props.departureDay.toString());
 
+ // ------------------------------- FÜR DIE VERZÖGERUNG---------------------------------------------------------------
+ useEffect(() => {
+  const timer = setTimeout(() => {
+ setHideConnectionSelect(false);
+ setloadingMessage(false);
+  }, 1000);
+  return () => clearTimeout(timer);
+}, []);
+
+
  var newDate = new Date( (props.departureDay) + 1 * 86400000 );
  newDate.setDate(Number(newDate.getDate()) + 1);
  console.log("newdate." + newDate);
 
+
   return (
     <div> 
       <form>
-        {hideConnectionSelect? null : ( 
+        {hideConnectionSelect? (loadingMessage? <p>...loading...</p> : null)  : ( 
           <div>   
             <h1 className="logo">Nav2Gö</h1>
             <h1>Verbindungsauswahl</h1>
@@ -101,15 +113,13 @@ const ConnectionSelect = (props) => {
                 {timeMinCheapRandomizer(durationCheapMin)};
                 {timeHourCheapRandomizer(durationHour)}; */}
               <h2>Günstigste Verbindung</h2>
-              <div id="containerCheapestConnection">
+              <div id="containerFastestConnection">
                 <div className="verbindung-textfeld">
                     Fahrtkosten: { (Fahrtkostenrechner(FahrtkostenGuenstig))} .00 € </div>
-                <div className="verbindung-textfeld">Dauer: {displayedDurations[0]} h {displayedDurations[1]} min</div>
-                <div className="verbindung-textfeld">Umstiege 2</div>
+                <div className="verbindung-textfeld">Dauer:  {displayedDurations[0]} h {displayedDurations[1]} min</div>
+                <div className="verbindung-textfeld">Umstiege: 1</div>
                 <div className="umstiegIcons">
                 <FaBus size="3rem" color="white" />
-                <BsArrowRight size="3rem" color="white" />
-                <GiKickScooter size="3rem" color="white" />
                 <BsArrowRight size="3rem" color="white" />
                 <FaBus size="3rem" color="white" />
               </div>
@@ -117,7 +127,7 @@ const ConnectionSelect = (props) => {
             </div>
           </div>)
       }
-      {cheaperConnectionStarted  ? (
+      {fasterConnectionStarted  ? (
             <ConnectionDisplay
             onSetStartFormHidden = {props.onSetStartFormHidden}
             departureStop={props.departureStop}
@@ -137,10 +147,12 @@ const ConnectionSelect = (props) => {
               setLowerButtonFirstPressed(false);}
           }
             /> 
-            ) : ( lowerButtonFirstPressed? null : (
-              <div className="connectionChoice">
-                <button onClick={() => {
-                  setCheaperConnectionStarted(true); 
+            ) : ( lowerButtonFirstPressed? null : (loadingMessage? null : 
+              <div className="connectionChoice containerConnectionButton">
+                <button
+                className="button-select"
+                 onClick={() => {
+                  setFasterConnectionStarted(true); 
                   setUpperButtonFirstPressed(true);
                   setHideConnectionSelect(true); }}>
                   {" "}
@@ -157,16 +169,18 @@ const ConnectionSelect = (props) => {
               Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)} .00 € </div>
                {/* Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)}.00 €</div> */}
             <div className="verbindung-textfeld">Dauer: {displayedDurations[2]} h {displayedDurations[3]} min </div>
-            <div className="verbindung-textfeld">Umstiege 1</div>
+            <div className="verbindung-textfeld">Umstiege: 2</div>
             <div className="umstiegIcons">
-                <FaBus size="3rem" color="white" />
+              <FaBus size="3rem" color="white" />
+                <BsArrowRight size="3rem" color="white" />
+                <GiKickScooter size="3rem" color="white" />
                 <BsArrowRight size="3rem" color="white" />
                 <FaBus size="3rem" color="white" />
             </div>
           </div>
         </div> )
     }
-      {fasterConnectionStarted  ? (
+      {cheaperConnectionStarted  ? (
         <ConnectionDisplay
             onSetStartFormHidden = {props.onSetStartFormHidden}
             departureStop={props.departureStop}
@@ -186,22 +200,25 @@ const ConnectionSelect = (props) => {
               setLowerButtonFirstPressed(false);}
           }
             />
-            ) : ( upperButtonFirstPressed? null : (
-            <div className="connectionChoice">
-              <div id="containerFastestConnection">
-                <button onClick={() => { 
-                    setFasterConnectionStarted(true);  
+            ) : ( upperButtonFirstPressed? null :  (loadingMessage? null : 
+            <div className="connectionChoice containerConnectionButton">
+              
+                <button
+                className="button-select"
+                 onClick={() => { 
+                    setCheaperConnectionStarted(true);  
                     setLowerButtonFirstPressed(true);
                     setHideConnectionSelect(true); }} >
                   {" "}
                   Route starten{" "}
                 </button>
-              </div>
+              
             </div>))
         }
         {hideConnectionSelect? null : (
           backToSearchPageClicked ? ( <SearchPage/> ) : (
             <button 
+            className="backToSearchButton"
               onClick={() => {setBackToSearchPageClicked(true);  setHideConnectionSelect(true); props.onGoBack(); } }
             >
               {" "}
