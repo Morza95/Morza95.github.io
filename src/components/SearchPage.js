@@ -43,7 +43,7 @@ const SearchPage = (props) => {
         title: "Falsche Daten",
         message: "Bitte geben Sie einen passenden Start- und Zielort ein!",
       });
-      return (errorOccured = true);  // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
+      return (errorOccured = true); // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
     }
     if (departureTime === "" || departureDay === "") {
       setError({
@@ -97,13 +97,13 @@ const SearchPage = (props) => {
     setDepartureTime(event.target.value);
   };
 
-   // ------------------------------- FÜR DIE VERZÖGERUNG---------------------------------------------------------------
- useEffect(() => {
-  const timer = setTimeout(() => {
- setloadingMessage(false);
-  }, 1000);
-  return () => clearTimeout(timer);
-}, []);
+  // ------------------------------- FÜR DIE VERZÖGERUNG---------------------------------------------------------------
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setloadingMessage(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <React.Fragment>
@@ -153,18 +153,22 @@ const SearchPage = (props) => {
         </div>
       )}
       <div>
-        {searchClicked ? ( (loadingMessage? <p>...loading...</p> : 
-          <ConnectionSelect
-            onSetStartFormHidden={props.onSetStartFormHidden}
-            onGoBack={() => {
-              setHideSearchFields(false);
-              setSearchClicked(false);
-            }}
-            departureStop={departureStop}
-            destinationStop={destinationStop}
-            departureDay={departureDay}
-            departureTime={departureTime}
-          />)
+        {searchClicked ? (
+          loadingMessage ? (
+            <p>...loading...</p>
+          ) : (
+            <ConnectionSelect
+              onSetStartFormHidden={props.onSetStartFormHidden}
+              onGoBack={() => {
+                setHideSearchFields(false);
+                setSearchClicked(false);
+              }}
+              departureStop={departureStop}
+              destinationStop={destinationStop}
+              departureDay={departureDay}
+              departureTime={departureTime}
+            />
+          )
         ) : (
           <div className="buttons-search-page">
             <button
@@ -198,33 +202,32 @@ const SearchPage = (props) => {
         <option value="Auf dem Hagen"></option>
         <option value="Tulpenweg"></option>
         <option value="Schützenplatz"></option>
-        <option value="Landgericht/Bahnhof"></option>
+        <option value="Landgericht/ Bahnhof"></option>
         <option value="Bürgerstraße"></option>
         <option value="Hiroshimaplatz"></option>
         <option value="Schillerstraße"></option>
         <option value="Reinholdstraße"></option>
-        <option value="Fritz-Reuter-Straße"></option>
+        <option value="Fritz-Straße"></option>
         <option value="Treuenhagen"></option>
-        <option value="Baumschulenweg"></option>
+        <option value="Baumweg"></option>
         <option value="Stadtstieg"></option>
-        <option value="Kiesseestraße"></option>
+        <option value="Kiessee"></option>
         <option value="Teichstraße"></option>
         <option value="Bornbreite"></option>
         <option value="Gehrenring"></option>
-        <option value="Burckhardtweg"></option>
-        <option value="Tammannstraße"></option>
+        <option value="Hardtweg"></option>
+        <option value="Tammstraße"></option>
         <option value="Klinikum"></option>
         <option value="Krugstraße"></option>
         <option value="Deisterstraße"></option>
         <option value="Elmweg"></option>
-        <option value="Sollingstraße"></option>
-        <option value="Bramwaldstraße"></option>
+        <option value="Sollstraße"></option>
+        <option value="Waldstraße"></option>
         <option value="Siekweg"></option>
         <option value="Klosterweg"></option>
         <option value="Lutteranger"></option>
         <option value="An der Lutte"></option>
         <option value="Grüner Weg"></option>
-        <option value="Liebrechtstraße"></option>
         <option value="Kreuzbergring"></option>
       </datalist>
     </React.Fragment>
@@ -232,4 +235,3 @@ const SearchPage = (props) => {
 };
 
 export default SearchPage;
-
