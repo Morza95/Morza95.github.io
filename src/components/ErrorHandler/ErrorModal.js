@@ -7,13 +7,13 @@ import classes from "./ErrorModal.module.css";
 const ErrorModal = (props) => {
   return (
     <div className="ErrorPage">
-      {/* <div className={classes.backdrop} onClick={props.onConfirm} />   Hier müsste noch eine Card oder Form drüber gelegegt werden*/}
-      {/* backdrop meint auf den Hintergrund klicken */}
+      {/* <div className={classes.backdrop} onClick={props.onConfirm} /> */}
+      
       <div className="ErrorPageTitle">
-        <header className={classes.header}>
+        <header>
           <h2>{props.title}</h2>
         </header>
-        <div className={classes.content}>
+        <div>
           <p>{props.message}</p>
         </div>
         <footer className={classes.actions}>

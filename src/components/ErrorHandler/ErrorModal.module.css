@@ -1,4 +1,4 @@
-/* .backdrop {
+ .backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,4 +42,4 @@
       left: calc(50% - 20rem);
       width: 40rem;
     }
-  } */
+  } 
