@@ -121,7 +121,7 @@ const ConnectionSelect = (props) => {
     const timer = setTimeout(() => {
       setHideConnectionSelect(false);
       setloadingMessage(false);
-    }, 5000);
+    }, 7790);
     return () => clearTimeout(timer);
   }, []);
 

@@ -108,7 +108,7 @@ const SearchPage = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setloadingMessage(false);
-    }, 1000);
+    }, 7790);
     return () => clearTimeout(timer);
   }, []);
 

@@ -146,7 +146,7 @@ const ConnectionDisplay = (props) => {
     const timer = setTimeout(() => {
    setHideConnectionDisplay(false);
    setloadingMessage(false);
-    }, 5000);
+    }, 7790);
     return () => clearTimeout(timer);
   }, []);
 
