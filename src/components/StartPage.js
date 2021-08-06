@@ -54,7 +54,7 @@ const StartPage = (props) => {
                 <br></br>
               </p>
             </div>
-            <h1 id="appVersionAnzeige1">App-Version 1</h1>
+            <h1 id="appVersionAnzeige2">App-Version 2</h1>
           </header>
         </form>
       )}

@@ -52,6 +52,13 @@ const SearchPage = (props) => {
       });
       return (errorOccured = true); // nur zum Bearbeiten der Datums/zeitproleme: zurücksetzen!
     }
+    if(departureStop === destinationStop){
+      setError({
+        title: "Falsche Daten",
+        message: "Start- und Zielort dürfen nicht identisch sein!",
+      });
+      return (errorOccured = true); 
+    }
   };
 
   ////////// ErrorHandler /////////
