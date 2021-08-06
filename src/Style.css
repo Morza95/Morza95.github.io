@@ -396,20 +396,12 @@ a:hover {
     padding: 0;
     margin: 0;
   }
-  #appVersionAnzeige1 {
+  #appVersionAnzeige1, #appVersionAnzeige2 {
     margin-left: 15%;
     margin-right: 15%;
     font-size: large;
   }
-  #appVersionAnzeige2 {
-    border-radius: 12px;
-    background: red;
-    justify-content: center;
-    align-items: center;
-    margin: 0 38%;
-    margin-top: 5px;
-    font-size: x-large;
-  }
+ 
 
   /* StartPage */
 

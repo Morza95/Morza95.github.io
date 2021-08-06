@@ -16,7 +16,7 @@ const SearchPage = (props) => {
   const [departureTime, setDepartureTime] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
   const [error, setError] = useState();
-  const [hideSearchFields, setHideSearchFields] = useState(false);
+  const [hideSearchFields, setHideSearchFields] = useState(true);
   const departureInputRef = useRef();
   const destinationInputRef = useRef();
   const [loadingMessage, setloadingMessage] = useState(true);
@@ -108,11 +108,15 @@ const SearchPage = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setloadingMessage(false);
+      setHideSearchFields(false);
+
     }, 7790);
     return () => clearTimeout(timer);
   }, []);
 
-  return (
+  return (   loadingMessage ? (
+    <p>...loading...</p>
+  ): (
     <React.Fragment>
       {error && (
         <ErrorModal
@@ -161,9 +165,6 @@ const SearchPage = (props) => {
       )}
       <div>
         {searchClicked ? (
-          loadingMessage ? (
-            <p>...loading...</p>
-          ) : (
             <ConnectionSelect
               onSetStartFormHidden={props.onSetStartFormHidden}
               onGoBack={() => {
@@ -175,8 +176,7 @@ const SearchPage = (props) => {
               departureDay={departureDay}
               departureTime={departureTime}
             />
-          )
-        ) : (
+            ) : (
           <div className="buttons-search-page">
             <button
               className="button-search"
@@ -238,6 +238,7 @@ const SearchPage = (props) => {
         <option value="Kreuzbergring"></option>
       </datalist>
     </React.Fragment>
+  )
   );
 };
 
