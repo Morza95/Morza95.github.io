@@ -146,7 +146,7 @@ const ConnectionDisplay = (props) => {
     const timer = setTimeout(() => {
    setHideConnectionDisplay(false);
    setloadingMessage(false);
-    }, 1000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -194,11 +194,11 @@ let splittedDurationsFast = durationSplitFast( props.durationH, props.durationMi
                 <div className="container-ConnectionDisplay">
                   <div className="verbindung-textfeld">
                     {" "}
-                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))}, {newDepartureTime}{" "}
+                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {newDepartureTime}{" "}
                   </div>
                   <div className="verbindung-textfeld">Linie: 50</div>
                   <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))},{" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]))}{" "}
+                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]))}{" "}
                   </div>
                   <div className="verbindung-textfeld">
                     <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
@@ -214,11 +214,11 @@ let splittedDurationsFast = durationSplitFast( props.durationH, props.durationMi
                 <div className="container-ConnectionDisplay">
                   <div className="verbindung-textfeld">
                     {" "}
-                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))}, {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsFast[1]))}{" "}
+                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsFast[1]))}{" "}
                   </div>
                   <div className="verbindung-textfeld">Verfügbare Scooter: 3</div>
                   <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))}, {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]))}{" "}
+                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]))}{" "}
                   </div>
                   <div className="verbindung-textfeld">
                     <p>Abfahrt an Haltestelle:</p> Weender Straße-Ost {" "}
@@ -234,11 +234,11 @@ let splittedDurationsFast = durationSplitFast( props.durationH, props.durationMi
                 <div className="container-ConnectionDisplay">
                   <div className="verbindung-textfeld">
                     {" "}
-                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))}, {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]+splittedDurationsFast[3]))}{" "}
+                    <p>Abfahrt:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]+splittedDurationsFast[3]))}{" "}
                   </div>
                   <div className="verbindung-textfeld">Linie: 12</div>
                   <div className="verbindung-textfeld">
-                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))}, {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]+splittedDurationsFast[3]+splittedDurationsFast[4]))}{" "}
+                    <p>Ankunft:</p> {outputWithoutYear(addDay(props.departureDay, changeDay))} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsFast[0]+splittedDurationsCheap[1]+splittedDurationsFast[2]+splittedDurationsFast[3]+splittedDurationsFast[4]))}{" "}
                   </div>
                   <div className="verbindung-textfeld">
                     <p>Abfahrt an Haltestelle:</p> Neues Rathaus {" "}
@@ -291,11 +291,11 @@ let splittedDurationsFast = durationSplitFast( props.durationH, props.durationMi
               <div className="container-ConnectionDisplay">
                 <div className="verbindung-textfeld">
                   {" "}
-                  <p>Abfahrt:</p> {outputWithoutYear(props.departureDay)} {newDepartureTime}{" "}
+                  <p>Abfahrt:</p> {outputWithoutYear(props.departureDay)} um {newDepartureTime}{" "}
                 </div>
                 <div className="verbindung-textfeld">Linie: 50</div>
                 <div className="verbindung-textfeld">
-                  <p>Ankunft:</p> {outputWithoutYear(props.departureDay)} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]))} {" "}
+                  <p>Ankunft:</p> {outputWithoutYear(props.departureDay)} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]))} {" "}
                 </div>
                 <div className="verbindung-textfeld">
                   <p>Abfahrt an Haltestelle:</p> {props.departureStop}{" "}
@@ -311,11 +311,11 @@ let splittedDurationsFast = durationSplitFast( props.durationH, props.durationMi
               <div className="container-ConnectionDisplay">
                 <div className="verbindung-textfeld">
                   {" "}
-                  <p>Abfahrt:</p> {outputWithoutYear(props.departureDay)} {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]+ splittedDurationsCheap[1]))}{" "}
+                  <p>Abfahrt:</p> {outputWithoutYear(props.departureDay)} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]+ splittedDurationsCheap[1]))}{" "}
                 </div>
                 <div className="verbindung-textfeld">Linie: 18</div>
                 <div className="verbindung-textfeld">
-                  <p>Ankunft:</p> {outputWithoutYear(props.departureDay)} {" "} {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]+ splittedDurationsCheap[1]+ splittedDurationsCheap[2]))}{" "}
+                  <p>Ankunft:</p> {outputWithoutYear(props.departureDay)} um {addDurationToTime(newDepartureTime, Number(0), Number(splittedDurationsCheap[0]+ splittedDurationsCheap[1]+ splittedDurationsCheap[2]))}{" "}
                 </div>
                 <div className="verbindung-textfeld">
                   <p>Abfahrt an Haltestelle:</p> Weender Straße-Ost {" "}

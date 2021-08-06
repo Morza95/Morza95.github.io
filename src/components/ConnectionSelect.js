@@ -121,7 +121,7 @@ const ConnectionSelect = (props) => {
     const timer = setTimeout(() => {
       setHideConnectionSelect(false);
       setloadingMessage(false);
-    }, 1000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -147,7 +147,7 @@ const ConnectionSelect = (props) => {
               <h2>Günstigste Verbindung</h2>
               <div id="containerFastestConnection">
                 <div className="verbindung-textfeld">
-                  Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)} .00 €{" "}
+                  Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)}.00 €{" "}
                 </div>
                 <div className="verbindung-textfeld">
                   Dauer: {displayedDurations[0]} h {displayedDurations[1]} min
@@ -203,7 +203,7 @@ const ConnectionSelect = (props) => {
           <h2>Schnellste Verbindung</h2>
           <div id="containerFastestConnection">
             <div className="verbindung-textfeld">
-              Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)} .00 €{" "}
+              Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)}.00 €{" "}
             </div>
             {/* Fahrtkosten: {Fahrtkostenrechner(FahrtkostenGuenstig)}.00 €</div> */}
             <div className="verbindung-textfeld">

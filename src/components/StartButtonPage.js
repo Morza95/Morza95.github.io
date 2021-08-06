@@ -12,13 +12,13 @@ const StartButtonPage = () => {
       ) : (
         <div>
           <p id="UseCaseDescribtion">
+          
             <br></br>
-            Sehr geehrte(r) Teilnehmer(in),
-            <br></br>
-            <br></br> im Rahmen unserer Forschungsarbeit an der
+                 Bitte testen Sie nun App-Version 2.
+            {/* <br></br> im Rahmen unserer Forschungsarbeit an der
             Georg-August-Universität Göttingen beschäftigen wir uns mit dem
             Thema "Designing apps: A comparative evaluation of the importance of
-            functionality, performance and visual appeal" und bitten Sie zwei
+            functionality, performance and visual appeal" und bitten Sie, zwei
             Web-Apps zu testen und an einer Befragung teilzunehmen. Die
             Teilnahme dauert insgesamt ca. 5-10 Minuten.
             <br></br>
@@ -31,6 +31,8 @@ const StartButtonPage = () => {
             sich gerne an:
             <br></br>
             <br></br>franz.buschendorf@stud.uni-goettingen.de
+            <br></br>katharina.girndt@stud.uni-goettingen.de
+            <br></br>kai.hoering@stud.uni-goettingen.de */}
             <br></br>
             <br></br>
           </p>
