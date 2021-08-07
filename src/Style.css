@@ -216,12 +216,13 @@ p {
 .buttons-search-page .button-search {
   width: 200px;
   height: 50px;
-  margin: 2rem;
-  margin-right: 2rem;
+  margin: 1rem;
+  /* margin: 2rem;
+  margin-right: 2rem; */
 }
-.buttons-search-page .button-search:last-child {
+/* .buttons-search-page .button-search:last-child {
   margin-left: 50px;
-}
+} */
 .button-swap {
   border: none;
   background-color: rgb(95, 94, 94);
@@ -396,12 +397,12 @@ a:hover {
     padding: 0;
     margin: 0;
   }
-  #appVersionAnzeige1, #appVersionAnzeige2 {
+  #appVersionAnzeige1,
+  #appVersionAnzeige2 {
     margin-left: 15%;
     margin-right: 15%;
     font-size: large;
   }
- 
 
   /* StartPage */
 
@@ -430,7 +431,7 @@ a:hover {
     /* width: 120px; */
     /* height: 60px; */
     width: 135px;
-    height: 130px;
+    height: 110px;
     font-size: medium;
     margin: 15px 10px;
     padding: auto;
@@ -449,6 +450,7 @@ a:hover {
     grid-column: 1 / span 2;
     justify-content: center;
     font-size: x-large;
+    min-height: 25px;
     height: 50px;
     padding: 5px;
   }
@@ -505,15 +507,15 @@ a:hover {
     width: auto;
     height: auto;
     font-size: medium;
-    margin: 15px 10px;
-    padding: auto;
+    margin: 5px 10px;
+    padding: 0.6rem;
     text-align: center;
   }
 
-  .buttons-search-page .button-search:last-child {
+  /* .buttons-search-page .button-search:last-child {
     margin-left: 2rem;
     margin-top: 2rem;
-  }
+  } */
   .buttons-search-page {
     /* flex-direction: column; */
     display: flex;
@@ -528,13 +530,6 @@ a:hover {
   .container-searchpage input:nth-child(4) {
     margin-top: 30px;
   }
-  /* .button-search {
-    display: block;
-    float: none;
-    width: 10rem;
-    height: 3rem;
-    margin: auto;
-  } */
   .button-swap {
     border: none;
     background: var(--background-color);
@@ -544,7 +539,6 @@ a:hover {
     margin: 15px auto;
     padding: auto;
     transform: rotate(90deg);
-    margin-bottom: 50px;
   }
   /* Verbindungsauswahl */
 
