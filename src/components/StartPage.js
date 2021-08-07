@@ -31,9 +31,9 @@ const StartPage = (props) => {
                     weiterzuhelfen:
                     <br></br>
                     <br></br>Sie haben sich dazu entschieden, Ihre Freunde in
-                    Göttingen zu besuchen. Angekommen am Hauptbahnhof Göttingen
-                    wollen Sie die öffentlichen Verkehrsmittel nutzen, um zu
-                    Ihnen weiterfahren.
+                    Göttingen zu besuchen. Nachdem Sie am Hauptbahnhof in Göttingen 
+                    angekommen sind, wollen Sie die öffentlichen Verkehrsmittel 
+                    nutzen, um zu ihren Freunden zu fahren.
                     <br></br>
                     <br></br>
                     Ihre Freunde haben Ihnen bereits mitgeteilt, dass Sie an der
