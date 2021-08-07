@@ -33,7 +33,7 @@ const StartPage = (props) => {
                     <br></br>Sie haben sich dazu entschieden, Ihre Freunde in
                     Göttingen zu besuchen. Nachdem Sie am Hauptbahnhof in Göttingen 
                     angekommen sind, wollen Sie die öffentlichen Verkehrsmittel 
-                    nutzen, um zu ihren Freunden zu fahren.
+                    nutzen, um zu Ihren Freunden zu fahren.
                     <br></br>
                     <br></br>
                     Ihre Freunde haben Ihnen bereits mitgeteilt, dass Sie an der
