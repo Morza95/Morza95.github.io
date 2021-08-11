@@ -355,7 +355,7 @@ const ConnectionDisplay = (props) => {
               )}
             </div>
           )}
-          ;
+          
         </div>
       ) : (
         <div>
@@ -466,7 +466,7 @@ const ConnectionDisplay = (props) => {
           )}
         </div>
       )}
-      )
+      
     </div>
   );
 };

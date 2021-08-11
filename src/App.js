@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Startseite from "./components/StartPage.js";
 //import Verbindung from "./components/Verbindung.js";
 //import ConnectionDisplay from "./components/ConnectionDisplay.js";
-import StartButtonPage from "./components/StartButtonPage.js";
+import StartPage from "./components/StartPage.js";
 
 import SearchPage from "./components/SearchPage.js";
 import Verbindungsanzeige from "./components/ConnectionDisplay.js";
@@ -15,7 +15,7 @@ const App = () => {
     // diese <> </> Umschließung funktioniert in diesem Projekt als Ersatz für einen Wrapper oder <React.Fragment/>
     <>
       {/* <Test/> */}
-      <StartButtonPage />
+      <StartPage />
       {/* <Startseite /> */}
       {/* <Verbindung />; */}
     </>
