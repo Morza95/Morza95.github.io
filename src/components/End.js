@@ -25,8 +25,8 @@ const End = (props) => {
         </header>
         <div id="containerButtonEnd">
           {/* <button type="submit">Zurück auf Anfang</button> */}
-          <a id="aGreen" href="https://inkadrum.github.io//">
-            Zur Zweiten App!
+          <a href="https://inkadrum.github.io//">
+            Zur zweiten App!
           </a> 
           {/* <a href="https://www.survio.com/survey/d/G9Q1M7L8V7J5L3I9V">
             Umfrage starten
